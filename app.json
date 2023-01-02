@@ -1,0 +1,16 @@
+{
+    "expo": {
+        "name": "Diary app",
+        "slug": "diaryApp",
+        "version": "1.0.0",
+        "githubUrl": "https://github.com/Ernest2026/diaryApp",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#EE3A46"
+        },
+        "android": { "softwareKeyboardLayoutMode": "pan" }
+    }
+}
