@@ -11,6 +11,6 @@
             "resizeMode": "contain",
             "backgroundColor": "#EE3A46"
         },
-        "android": { "softwareKeyboardLayoutMode": "pan" }
+        "android": { "softwareKeyboardLayoutMode": "resize" }
     }
 }

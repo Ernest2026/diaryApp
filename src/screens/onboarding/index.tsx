@@ -3,15 +3,12 @@ import { Text } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import { Image, StyleSheet, View } from 'react-native'
 import { useState } from 'react'
+import { screen1, screen2, screen3 } from '../../../assets/onboarding'
 
-const OnboardingScreen = ({ navigation }: any) => {
+const Onboarding = ({ navigation }: any) => {
     const { theme } = useTheme()
     const styles = makeStyles(theme)
     const [screen, setScreen] = useState(0)
-
-    const screen1 = require('../../../assets/onboarding/screen1.png')
-    const screen2 = require('../../../assets/onboarding/screen2.png')
-    const screen3 = require('../../../assets/onboarding/screen3.png')
 
     const screensData = [
         {
@@ -110,7 +107,7 @@ const OnboardingScreen = ({ navigation }: any) => {
     )
 }
 
-export default OnboardingScreen
+export default Onboarding
 
 const makeStyles = (theme: any) =>
     StyleSheet.create({

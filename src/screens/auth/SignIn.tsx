@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { icon } from '../../../assets'
 
-const SignUp = ({ navigation }: any) => {
+const SignIn = ({ navigation }: any) => {
     const { theme } = useTheme()
 
     return (
@@ -25,11 +25,8 @@ const SignUp = ({ navigation }: any) => {
 
                 <View style={{ paddingVertical: 20 }}>
                     <Text h3 style={{ textAlign: 'center', marginBottom: 24 }}>
-                        Sign Up
+                        Sign In
                     </Text>
-
-                    <Text style={styles.label}>Name</Text>
-                    <TextInput style={styles.input} />
 
                     <Text style={styles.label}>Email Address</Text>
                     <TextInput style={styles.input} />
@@ -39,20 +36,20 @@ const SignUp = ({ navigation }: any) => {
                 </View>
 
                 <Button
-                    title="Sign Up"
+                    title="Sign In"
                     containerStyle={styles.btnContainerStyle}
                     buttonStyle={{
                         backgroundColor: theme.colors['red-100'],
                     }}
                     titleStyle={styles.btnTitleStyle}
-                    onPress={() => navigation.navigate('signupconfirmed')}
+                    onPress={() => navigation.navigate('home')}
                 />
             </View>
         </SafeArea>
     )
 }
 
-export default SignUp
+export default SignIn
 
 const styles = StyleSheet.create({
     logo: {

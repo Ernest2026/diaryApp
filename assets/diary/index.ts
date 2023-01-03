@@ -1,0 +1,5 @@
+export { default as happy } from './happy.png'
+export { default as indifferent } from './indifferent.png'
+export { default as sad } from './sad.png'
+export { default as veryhappy } from './veryhappy.png'
+export { default as verysad } from './verysad.png'

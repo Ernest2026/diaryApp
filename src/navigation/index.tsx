@@ -1,8 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import OnboardingScreen from '../screens/onboarding'
-import WelcomeScreen from '../screens/onboarding/Welcome'
-import SignUpScreen from '../screens/auth/SignUp'
+import Onboarding from '../screens/onboarding'
+import Welcome from '../screens/onboarding/Welcome'
+import SignUp from '../screens/auth/SignUp'
+import SignIn from '../screens/auth/SignIn'
+import SignUpConfirmed from '../screens/auth/SignUpConfirmed'
+import Home from '../screens/diary/Home'
+import ViewEntry from '../screens/diary/ViewEntry'
 
 const Stack = createNativeStackNavigator()
 
@@ -14,10 +18,18 @@ const Navigation = () => {
                 screenOptions={{ headerShown: false }}
             >
                 {/* Onboarding screen */}
-                <Stack.Screen name="onboarding" component={OnboardingScreen} />
-                <Stack.Screen name="welcome" component={WelcomeScreen} />
+                <Stack.Screen name="onboarding" component={Onboarding} />
+                <Stack.Screen name="welcome" component={Welcome} />
                 {/* Authentication screen */}
-                <Stack.Screen name="signup" component={SignUpScreen} />
+                <Stack.Screen name="signup" component={SignUp} />
+                <Stack.Screen name="signin" component={SignIn} />
+                <Stack.Screen
+                    name="signupconfirmed"
+                    component={SignUpConfirmed}
+                />
+                {/* Diary Screen */}
+                <Stack.Screen name="home" component={Home} />
+                <Stack.Screen name="viewentry" component={ViewEntry} />
             </Stack.Navigator>
         </NavigationContainer>
     )

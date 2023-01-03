@@ -1,17 +1,15 @@
 import { Button, Text, useTheme } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import { Image, StyleSheet, View } from 'react-native'
+import { icon } from '../../../assets'
 
-const WelcomeScreen = ({ navigation }: any) => {
+const Welcome = ({ navigation }: any) => {
     const { theme } = useTheme()
 
     return (
         <SafeArea>
             <View style={styles.wlcContainer}>
-                <Image
-                    style={styles.logo}
-                    source={require('../../../assets/icon.png')}
-                />
+                <Image style={styles.logo} source={icon} />
 
                 <View>
                     <Text h1 style={{ textAlign: 'center' }}>
@@ -41,7 +39,7 @@ const WelcomeScreen = ({ navigation }: any) => {
                             backgroundColor: theme.colors['red-100'],
                         }}
                         titleStyle={styles.btnTitleStyle}
-                        // onPress={() => navigation.navigate('welcome')}
+                        onPress={() => navigation.navigate('signin')}
                     />
                 </View>
             </View>
@@ -49,7 +47,7 @@ const WelcomeScreen = ({ navigation }: any) => {
     )
 }
 
-export default WelcomeScreen
+export default Welcome
 
 const styles = StyleSheet.create({
     wlcContainer: {
