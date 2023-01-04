@@ -1,7 +1,7 @@
 import { Button, useTheme } from '@rneui/themed'
 import { Text } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
-import { Image, StyleSheet, View } from 'react-native'
+import { Image, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 import { useState } from 'react'
 import { screen1, screen2, screen3 } from '../../../assets/onboarding'
 
@@ -66,6 +66,7 @@ const Onboarding = ({ navigation }: any) => {
                     <>
                         <Button
                             type="clear"
+                            TouchableComponent={TouchableWithoutFeedback}
                             titleStyle={{ color: theme.colors['red-75'] }}
                             onPress={() => navigation.navigate('welcome')}
                         >

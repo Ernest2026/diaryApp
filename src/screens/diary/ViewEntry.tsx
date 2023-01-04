@@ -1,10 +1,10 @@
-import { Icon, Text } from '@rneui/themed'
+import { FAB, Icon, Text } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import { Image, ScrollView, TextInput, View } from 'react-native'
-import { veryhappy } from '../../../assets/diary'
+import { veryhappy } from '../../../assets/emoji'
 import { useState } from 'react'
 
-const ViewEntry = () => {
+const ViewEntry = ({ navigation }: any) => {
     const [text, setText] = useState('')
     return (
         <SafeArea style={{ paddingRight: 0, paddingLeft: 0 }}>
@@ -12,13 +12,13 @@ const ViewEntry = () => {
                 style={{
                     flexDirection: 'row',
                     alignItems: 'center',
-                    paddingHorizontal: 32,
+                    paddingHorizontal: 20,
                     paddingVertical: 16,
                     // backgroundColor: 'blue',
                 }}
             >
                 <Icon
-                    type="font-awesome"
+                    type="font-awesome-5"
                     color="black"
                     name="arrow-left"
                     iconStyle={{
@@ -75,6 +75,19 @@ const ViewEntry = () => {
                         {`Today, my summer holidays have begun. I have some plans for summer vacation. I’m planning to go to a wildlife sanctuary and for boating in a lake. I just don’t want to spend a single moment idly and definitely want to enjoy every bit of these holidays.\n\nLast year, I did not plan my vacations, but this year, I will do everything to make them interesting. I now need to go. I’m excited and eagerly looking forward to my holidays.\n\nLast year, I did not plan my vacations, but this year, I will do everything to make them interesting. I now need to go. I’m excited and eagerly looking forward to my holidays.`}
                     </Text>
                 </ScrollView>
+
+                <FAB
+                    // loading
+                    color="#EE3A46"
+                    visible={true}
+                    placement="right"
+                    icon={{
+                        name: 'pen',
+                        type: 'font-awesome-5',
+                        color: 'white',
+                    }}
+                    onPress={() => navigation.navigate('editentry')}
+                />
             </View>
         </SafeArea>
     )

@@ -1,5 +1,6 @@
 import { Dialog, Icon } from '@rneui/themed'
 import { Dialog as DialogType } from '../../screens/diary/Home'
+import { TouchableWithoutFeedback } from 'react-native'
 
 const DiaryDialog = ({
     setDialog,
@@ -21,6 +22,7 @@ const DiaryDialog = ({
         >
             <Dialog.Button
                 title="View Entry"
+                TouchableComponent={TouchableWithoutFeedback}
                 onPress={() => {
                     setDialog({ show: false, index: null })
                     navigation.navigate('viewentry')
@@ -33,6 +35,9 @@ const DiaryDialog = ({
                         style={{ marginRight: 18 }}
                     />
                 }
+                titleStyle={{
+                    color: 'black',
+                }}
                 containerStyle={{
                     alignItems: 'flex-start',
                 }}
@@ -42,7 +47,11 @@ const DiaryDialog = ({
             />
             <Dialog.Button
                 title="Edit Entry"
-                onPress={() => console.log('Primary Action Clicked!')}
+                TouchableComponent={TouchableWithoutFeedback}
+                onPress={() => {
+                    setDialog({ show: false, index: null })
+                    navigation.navigate('editentry')
+                }}
                 icon={
                     <Icon
                         name="pen"
@@ -51,6 +60,9 @@ const DiaryDialog = ({
                         style={{ marginRight: 18 }}
                     />
                 }
+                titleStyle={{
+                    color: 'black',
+                }}
                 containerStyle={{
                     alignItems: 'flex-start',
                     marginTop: 15,
@@ -61,6 +73,7 @@ const DiaryDialog = ({
             />
             <Dialog.Button
                 title="Delete Entry"
+                TouchableComponent={TouchableWithoutFeedback}
                 onPress={() => console.log('Primary Action Clicked!')}
                 icon={
                     <Icon

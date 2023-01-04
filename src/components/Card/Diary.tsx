@@ -1,6 +1,6 @@
 import { Card, Text } from '@rneui/themed'
 import { Image, View } from 'react-native'
-import { happy, indifferent, veryhappy, verysad } from '../../../assets/diary'
+import { happy, indifferent, veryhappy, verysad } from '../../../assets/emoji'
 
 export type Data = {
     id: number

@@ -1,5 +1,5 @@
 import { FlatList, TouchableOpacity } from 'react-native'
-import { Input, useTheme } from '@rneui/themed'
+import { FAB, Input, useTheme } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import DiaryCard, { Data } from '../../components/Card/Diary'
 import DiaryHeader from '../../components/Header/Diary'
@@ -90,7 +90,7 @@ const HomeScreen = ({ navigation }: any) => {
 
     return (
         <>
-            <DiaryHeader />
+            <DiaryHeader navigation={navigation} />
 
             <SafeArea style={{ marginTop: 16 }}>
                 <Input
@@ -127,6 +127,19 @@ const HomeScreen = ({ navigation }: any) => {
                     )}
                 />
             </SafeArea>
+
+            <FAB
+                // loading
+                color="#EE3A46"
+                visible={true}
+                placement="right"
+                icon={{
+                    name: 'pen',
+                    type: 'font-awesome-5',
+                    color: 'white',
+                }}
+                onPress={() => navigation.navigate('editentry')}
+            />
 
             {dialog.show && (
                 <DiaryDialog setDialog={setDialog} navigation={navigation} />

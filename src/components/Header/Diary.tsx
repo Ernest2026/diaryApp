@@ -1,8 +1,8 @@
-import { Header, Icon } from '@rneui/themed'
-import { Image, StyleSheet } from 'react-native'
+import { Button, Header, Icon } from '@rneui/themed'
+import { Image, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import { blackLogo } from '../../../assets'
 
-const DiaryHeader = () => {
+const DiaryHeader = ({ navigation }: any) => {
     return (
         <Header
             containerStyle={{
@@ -16,20 +16,42 @@ const DiaryHeader = () => {
                 justifyContent: 'flex-end',
             }}
             leftComponent={
-                <Icon
-                    iconStyle={{ height: 32 }}
-                    type="font-awesome-5"
-                    name="pen"
-                    color="black"
+                <Button
+                    type="clear"
+                    buttonStyle={{
+                        paddingHorizontal: 0,
+                        paddingVertical: 0,
+                    }}
+                    TouchableComponent={TouchableWithoutFeedback}
+                    onPress={() => navigation.navigate('editentry')}
+                    icon={
+                        <Icon
+                            type="font-awesome-5"
+                            name="pen"
+                            size={32}
+                            color="black"
+                        />
+                    }
                 />
             }
             centerComponent={<Image style={styles.logo} source={blackLogo} />}
             rightComponent={
-                <Icon
-                    iconStyle={{ height: 32 }}
-                    type="antdesign"
-                    name="setting"
-                    color="black"
+                <Button
+                    type="clear"
+                    buttonStyle={{
+                        paddingHorizontal: 0,
+                        paddingVertical: 0,
+                    }}
+                    TouchableComponent={TouchableWithoutFeedback}
+                    onPress={() => navigation.navigate('editentry')}
+                    icon={
+                        <Icon
+                            type="font-awesome-5"
+                            name="cog"
+                            size={32}
+                            color="black"
+                        />
+                    }
                 />
             }
         />
