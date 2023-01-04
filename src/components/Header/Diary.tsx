@@ -43,7 +43,7 @@ const DiaryHeader = ({ navigation }: any) => {
                         paddingVertical: 0,
                     }}
                     TouchableComponent={TouchableWithoutFeedback}
-                    onPress={() => navigation.navigate('editentry')}
+                    onPress={() => navigation.navigate('setting')}
                     icon={
                         <Icon
                             type="font-awesome-5"

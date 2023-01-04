@@ -8,6 +8,7 @@ import SignUpConfirmed from '../screens/auth/SignUpConfirmed'
 import Home from '../screens/diary/Home'
 import ViewEntry from '../screens/diary/ViewEntry'
 import EditEntry from '../screens/diary/EditEntry'
+import Setting from '../screens/setting'
 
 const Stack = createNativeStackNavigator()
 
@@ -32,6 +33,8 @@ const Navigation = () => {
                 <Stack.Screen name="home" component={Home} />
                 <Stack.Screen name="viewentry" component={ViewEntry} />
                 <Stack.Screen name="editentry" component={EditEntry} />
+                {/* Settings Screen */}
+                <Stack.Screen name="setting" component={Setting} />
             </Stack.Navigator>
         </NavigationContainer>
     )

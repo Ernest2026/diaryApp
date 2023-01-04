@@ -145,17 +145,7 @@ const EditEntry = ({ navigation }: any) => {
                     flex: 1,
                 }}
             >
-                <ScrollView
-                    showsVerticalScrollIndicator={false}
-                    onContentSizeChange={(width, height) =>
-                        console.log(
-                            'width is: ',
-                            width,
-                            'and height is: ',
-                            height
-                        )
-                    }
-                >
+                <ScrollView showsVerticalScrollIndicator={false}>
                     <TextInput
                         multiline
                         onChangeText={(text) => setText(text)}
