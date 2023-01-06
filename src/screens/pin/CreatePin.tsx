@@ -3,8 +3,19 @@ import { SafeArea } from '../../components/safearea'
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 import { Button, Input, Text } from '@rneui/themed'
 import SubHeader from '../../components/Header/SubHeader'
+import { RootStackParamList } from '../../navigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-const CreatePin = ({ navigation }: any) => {
+type CreatePinScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'createpin'
+>
+
+const CreatePin = ({
+    navigation,
+}: {
+    navigation: CreatePinScreenNavigationProp
+}) => {
     return (
         <SafeArea
             style={{

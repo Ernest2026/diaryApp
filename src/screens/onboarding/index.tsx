@@ -4,8 +4,19 @@ import { SafeArea } from '../../components/safearea'
 import { Image, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 import { useState } from 'react'
 import { screen1, screen2, screen3 } from '../../../assets/onboarding'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../navigation'
 
-const Onboarding = ({ navigation }: any) => {
+type OnboardingScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'onboarding'
+>
+
+const Onboarding = ({
+    navigation,
+}: {
+    navigation: OnboardingScreenNavigationProp
+}) => {
     const { theme } = useTheme()
     const styles = makeStyles(theme)
     const [screen, setScreen] = useState(0)

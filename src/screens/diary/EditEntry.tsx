@@ -20,6 +20,13 @@ import {
     verysad,
 } from '../../../assets/emoji'
 import SubHeader from '../../components/Header/SubHeader'
+import { RootStackParamList } from '../../navigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+
+type EditEntryScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'editentry'
+>
 
 const emoji = [
     {
@@ -56,7 +63,11 @@ const emoji = [
     },
 ]
 
-const EditEntry = ({ navigation }: any) => {
+const EditEntry = ({
+    navigation,
+}: {
+    navigation: EditEntryScreenNavigationProp
+}) => {
     const [keyboardVisible, setKeyboardVisible] = useState(false)
     const [text, setText] = useState(
         'Today, my summer holidays have begun. I have some plans for summer vacation. I’m planning to go to a wildlife sanctuary and for boating in a lake. I just don’t want to spend a single moment idly and definitely want to enjoy every bit of these holidays.\n\nLast year, I did not plan my vacations, but this year, I will do everything to make them interesting. I now need to go. I’m excited and eagerly looking forward to my holidays.\n\nLast year, I did not plan my vacations, but this year, I will do everything to make them interesting. I now need to go. I’m excited and eagerly looking forward to my holidays.\n\njdjddjdj'

@@ -2,8 +2,19 @@ import { Button, Text, useTheme } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import { Image, StyleSheet, View } from 'react-native'
 import { clapping } from '../../../assets/auth'
+import { RootStackParamList } from '../../navigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-const SetPinSuccessfully = ({ navigation }: any) => {
+type SetPinScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'setpinsuccessfully'
+>
+
+const SetPinSuccessfully = ({
+    navigation,
+}: {
+    navigation: SetPinScreenNavigationProp
+}) => {
     const { theme } = useTheme()
 
     return (

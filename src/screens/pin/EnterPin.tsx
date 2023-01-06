@@ -3,8 +3,19 @@ import { SafeArea } from '../../components/safearea'
 import { Image, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 import { Button, Input, Text } from '@rneui/themed'
 import { john } from '../../../assets/emoji'
+import { RootStackParamList } from '../../navigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-const EnterPin = ({ navigation }: any) => {
+type EnterPinScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'enterpin'
+>
+
+const EnterPin = ({
+    navigation,
+}: {
+    navigation: EnterPinScreenNavigationProp
+}) => {
     return (
         <SafeArea
             style={{ paddingVertical: 40, justifyContent: 'space-between' }}

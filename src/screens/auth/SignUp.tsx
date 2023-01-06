@@ -2,8 +2,15 @@ import { Button, Text, useTheme } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import { Image, StyleSheet, TextInput, View } from 'react-native'
 import { icon } from '../../../assets'
+import { RootStackParamList } from '../../navigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-const SignUp = ({ navigation }: any) => {
+type SignUpScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'signup'
+>
+
+const SignUp = ({ navigation }: { navigation: SignUpScreenNavigationProp }) => {
     const { theme } = useTheme()
 
     return (

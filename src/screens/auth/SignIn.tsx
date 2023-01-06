@@ -8,8 +8,15 @@ import {
     View,
 } from 'react-native'
 import { icon } from '../../../assets'
+import { RootStackParamList } from '../../navigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-const SignIn = ({ navigation }: any) => {
+type SignInScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'signin'
+>
+
+const SignIn = ({ navigation }: { navigation: SignInScreenNavigationProp }) => {
     const { theme } = useTheme()
 
     return (

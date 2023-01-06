@@ -1,12 +1,16 @@
-import { createTheme, ThemeProvider } from '@rneui/themed'
+import { ThemeProvider } from '@rneui/themed'
 import Navigation from './src/navigation'
 import theme from './src/theme'
+import { store } from './src/store'
+import { Provider } from 'react-redux'
 
 const App = () => {
     return (
-        <ThemeProvider theme={theme}>
-            <Navigation />
-        </ThemeProvider>
+        <Provider store={store}>
+            <ThemeProvider theme={theme}>
+                <Navigation />
+            </ThemeProvider>
+        </Provider>
     )
 }
 

@@ -3,8 +3,19 @@ import { SafeArea } from '../../components/safearea'
 import { Image, ScrollView, StyleSheet, TextInput, View } from 'react-native'
 import { veryhappy } from '../../../assets/emoji'
 import SubHeader from '../../components/Header/SubHeader'
+import { RootStackParamList } from '../../navigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-const ViewEntry = ({ navigation }: any) => {
+type ViewEntryScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'viewentry'
+>
+
+const ViewEntry = ({
+    navigation,
+}: {
+    navigation: ViewEntryScreenNavigationProp
+}) => {
     return (
         <SafeArea style={{ paddingRight: 0, paddingLeft: 0 }}>
             <SubHeader title="View Entry" navigation={navigation} />

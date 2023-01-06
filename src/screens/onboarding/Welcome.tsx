@@ -2,8 +2,19 @@ import { Button, Text, useTheme } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import { Image, StyleSheet, View } from 'react-native'
 import { icon } from '../../../assets'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../navigation'
 
-const Welcome = ({ navigation }: any) => {
+type WelcomeScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'welcome'
+>
+
+const Welcome = ({
+    navigation,
+}: {
+    navigation: WelcomeScreenNavigationProp
+}) => {
     const { theme } = useTheme()
 
     return (

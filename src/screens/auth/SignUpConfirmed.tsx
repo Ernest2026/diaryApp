@@ -2,8 +2,19 @@ import { Button, Text, useTheme } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import { Image, StyleSheet, View } from 'react-native'
 import { thumbup } from '../../../assets/auth'
+import { RootStackParamList } from '../../navigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
-const SignUpConfirmed = ({ navigation }: any) => {
+type SignUpConfirmedScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'signupconfirmed'
+>
+
+const SignUpConfirmed = ({
+    navigation,
+}: {
+    navigation: SignUpConfirmedScreenNavigationProp
+}) => {
     const { theme } = useTheme()
 
     return (

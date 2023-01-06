@@ -5,6 +5,13 @@ import DiaryCard, { Data } from '../../components/Card/Diary'
 import DiaryDialog from '../../components/Dialog/Diary'
 import { useState } from 'react'
 import Header from '../../components/Header'
+import { RootStackParamList } from '../../navigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'home'
+>
 
 export type Dialog = {
     show: boolean
@@ -84,7 +91,11 @@ const CardData: Data[] = [
     },
 ]
 
-const HomeScreen = ({ navigation }: any) => {
+const HomeScreen = ({
+    navigation,
+}: {
+    navigation: HomeScreenNavigationProp
+}) => {
     const [dialog, setDialog] = useState<Dialog>({ show: false, index: null })
 
     return (

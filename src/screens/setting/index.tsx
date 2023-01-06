@@ -3,8 +3,19 @@ import { Image, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
 import { Button, Switch, Text, useTheme } from '@rneui/themed'
 import { avatar } from '../../../assets/emoji'
 import SubHeader from '../../components/Header/SubHeader'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../navigation'
 
-const Setting = ({ navigation }: any) => {
+type SettingScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'setting'
+>
+
+const Setting = ({
+    navigation,
+}: {
+    navigation: SettingScreenNavigationProp
+}) => {
     const { theme } = useTheme()
     return (
         <SafeArea style={{ paddingRight: 0, paddingLeft: 0 }}>
