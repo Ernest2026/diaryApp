@@ -1,53 +1,39 @@
-import { Button, Icon, Input, Text, useTheme } from '@rneui/themed'
+import { Button, Text, useTheme } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
-import {
-    Image,
-    KeyboardAvoidingView,
-    StyleSheet,
-    TextInput,
-    View,
-} from 'react-native'
+import { Image, StyleSheet, TextInput, View } from 'react-native'
 import { icon } from '../../../assets'
 
 const SignUp = ({ navigation }: any) => {
     const { theme } = useTheme()
 
     return (
-        <SafeArea>
-            <View
-                style={{
-                    flex: 1,
-                    paddingVertical: 50,
-                    justifyContent: 'space-between',
-                }}
-            >
-                <Image style={styles.logo} source={icon} />
+        <SafeArea style={styles.container}>
+            <Image style={styles.logo} source={icon} />
 
-                <View style={{ paddingVertical: 20 }}>
-                    <Text h3 style={{ textAlign: 'center', marginBottom: 24 }}>
-                        Sign Up
-                    </Text>
+            <View style={{ paddingBottom: 20 }}>
+                <Text h3 style={{ textAlign: 'center', marginBottom: 24 }}>
+                    Sign Up
+                </Text>
 
-                    <Text style={styles.label}>Name</Text>
-                    <TextInput style={styles.input} />
+                <Text style={styles.label}>Name</Text>
+                <TextInput style={styles.input} />
 
-                    <Text style={styles.label}>Email Address</Text>
-                    <TextInput style={styles.input} />
+                <Text style={styles.label}>Email Address</Text>
+                <TextInput style={styles.input} />
 
-                    <Text style={styles.label}>Password</Text>
-                    <TextInput style={styles.input} />
-                </View>
-
-                <Button
-                    title="Sign Up"
-                    containerStyle={styles.btnContainerStyle}
-                    buttonStyle={{
-                        backgroundColor: theme.colors['red-100'],
-                    }}
-                    titleStyle={styles.btnTitleStyle}
-                    onPress={() => navigation.navigate('signupconfirmed')}
-                />
+                <Text style={styles.label}>Password</Text>
+                <TextInput style={styles.input} />
             </View>
+
+            <Button
+                title="Sign Up"
+                containerStyle={styles.btnContainerStyle}
+                buttonStyle={{
+                    backgroundColor: theme.colors['red-100'],
+                }}
+                titleStyle={styles.btnTitleStyle}
+                onPress={() => navigation.navigate('signupconfirmed')}
+            />
         </SafeArea>
     )
 }
@@ -55,11 +41,15 @@ const SignUp = ({ navigation }: any) => {
 export default SignUp
 
 const styles = StyleSheet.create({
+    container: {
+        paddingVertical: 30,
+        justifyContent: 'space-between',
+    },
     logo: {
         width: 160,
         marginRight: 'auto',
         marginLeft: 'auto',
-        maxHeight: 160,
+        maxHeight: '25%',
         resizeMode: 'contain',
     },
     btnContainerStyle: {

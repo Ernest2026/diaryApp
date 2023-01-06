@@ -1,4 +1,5 @@
 import {
+    Keyboard,
     ScrollView,
     StyleSheet,
     TextInput,
@@ -7,7 +8,7 @@ import {
 } from 'react-native'
 import { SafeArea } from '../../components/safearea'
 import { Button, Icon, Image, Text } from '@rneui/themed'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
     angry,
     depressed,
@@ -18,6 +19,7 @@ import {
     veryhappy,
     verysad,
 } from '../../../assets/emoji'
+import SubHeader from '../../components/Header/SubHeader'
 
 const emoji = [
     {
@@ -55,32 +57,34 @@ const emoji = [
 ]
 
 const EditEntry = ({ navigation }: any) => {
+    const [keyboardVisible, setKeyboardVisible] = useState(false)
     const [text, setText] = useState(
         'Today, my summer holidays have begun. I have some plans for summer vacation. I’m planning to go to a wildlife sanctuary and for boating in a lake. I just don’t want to spend a single moment idly and definitely want to enjoy every bit of these holidays.\n\nLast year, I did not plan my vacations, but this year, I will do everything to make them interesting. I now need to go. I’m excited and eagerly looking forward to my holidays.\n\nLast year, I did not plan my vacations, but this year, I will do everything to make them interesting. I now need to go. I’m excited and eagerly looking forward to my holidays.\n\njdjddjdj'
     )
 
+    useEffect(() => {
+        const keyboardDidShowListener = Keyboard.addListener(
+            'keyboardDidShow',
+            () => {
+                setKeyboardVisible(true) // or some other action
+            }
+        )
+        const keyboardDidHideListener = Keyboard.addListener(
+            'keyboardDidHide',
+            () => {
+                setKeyboardVisible(false) // or some other action
+            }
+        )
+
+        return () => {
+            keyboardDidHideListener.remove()
+            keyboardDidShowListener.remove()
+        }
+    }, [])
+
     return (
         <SafeArea style={{ paddingRight: 0, paddingLeft: 0 }}>
-            <View
-                style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    paddingHorizontal: 20,
-                    paddingVertical: 16,
-                    // backgroundColor: 'blue',
-                }}
-            >
-                <Icon
-                    type="font-awesome-5"
-                    color="black"
-                    name="arrow-left"
-                    iconStyle={{
-                        fontSize: 28,
-                        marginRight: 18,
-                    }}
-                />
-                <Text h4>Edit Entry</Text>
-            </View>
+            <SubHeader title="Edit Entry" navigation={navigation} />
 
             <View
                 style={{
@@ -155,7 +159,12 @@ const EditEntry = ({ navigation }: any) => {
                 </ScrollView>
             </View>
 
-            <View style={styles.mood}>
+            <View
+                style={{
+                    ...styles.mood,
+                    display: keyboardVisible ? 'none' : 'flex',
+                }}
+            >
                 <View
                     style={{
                         width: '30%',

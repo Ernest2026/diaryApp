@@ -7,24 +7,22 @@ const SignUpConfirmed = ({ navigation }: any) => {
     const { theme } = useTheme()
 
     return (
-        <SafeArea>
-            <View style={styles.container}>
-                <Image style={styles.image} source={thumbup} />
+        <SafeArea style={styles.container}>
+            <Image style={styles.image} source={thumbup} />
 
-                <Text h3 style={{ textAlign: 'center' }}>
-                    Great! You’ve successfully created an account.
-                </Text>
+            <Text h3 style={{ textAlign: 'center' }}>
+                Great! You’ve successfully created an account.
+            </Text>
 
-                <Button
-                    title="Sign In"
-                    containerStyle={styles.btnContainerStyle}
-                    buttonStyle={{
-                        backgroundColor: theme.colors['red-100'],
-                    }}
-                    titleStyle={styles.btnTitleStyle}
-                    onPress={() => navigation.navigate('signin')}
-                />
-            </View>
+            <Button
+                title="Sign In"
+                containerStyle={styles.btnContainerStyle}
+                buttonStyle={{
+                    backgroundColor: theme.colors['red-100'],
+                }}
+                titleStyle={styles.btnTitleStyle}
+                onPress={() => navigation.navigate('signin')}
+            />
         </SafeArea>
     )
 }
@@ -33,13 +31,12 @@ export default SignUpConfirmed
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         paddingVertical: 50,
         alignItems: 'center',
         justifyContent: 'space-between',
     },
     image: {
-        width: '100%',
+        width: '90%',
         resizeMode: 'contain',
     },
     btnContainerStyle: {

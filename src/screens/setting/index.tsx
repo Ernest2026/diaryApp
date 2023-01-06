@@ -1,74 +1,24 @@
 import { SafeArea } from '../../components/safearea'
-import { Image, TouchableWithoutFeedback, View } from 'react-native'
-import { Button, Icon, Switch, Text, useTheme } from '@rneui/themed'
+import { Image, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
+import { Button, Switch, Text, useTheme } from '@rneui/themed'
 import { avatar } from '../../../assets/emoji'
+import SubHeader from '../../components/Header/SubHeader'
 
 const Setting = ({ navigation }: any) => {
     const { theme } = useTheme()
     return (
-        <SafeArea>
-            <View
-                style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    paddingVertical: 16,
-                }}
-            >
-                {/* <Icon
-                    type="font-awesome-5"
-                    color="black"
-                    name="arrow-left"
-                    iconStyle={{
-                        fontSize: 28,
-                        marginRight: 18,
-                    }}
-                /> */}
-                <Button
-                    type="clear"
-                    buttonStyle={{
-                        paddingHorizontal: 0,
-                        paddingVertical: 0,
-                        marginRight: 18,
-                    }}
-                    TouchableComponent={TouchableWithoutFeedback}
-                    onPress={() => navigation.goBack()}
-                    icon={{
-                        type: 'font-awesome-5',
-                        color: 'black',
-                        name: 'arrow-left',
-                        size: 28,
-                    }}
-                />
-                <Text h4>Settings</Text>
-            </View>
+        <SafeArea style={{ paddingRight: 0, paddingLeft: 0 }}>
+            <SubHeader title="Settings" navigation={navigation} />
 
-            <View
-                style={{
-                    backgroundColor: 'white',
-                    flex: 1,
-                    borderRadius: 35,
-                    paddingHorizontal: 24,
-                    paddingVertical: 44,
-                }}
-            >
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                    }}
-                >
+            <View style={styles.itemsContainer}>
+                <View style={styles.itemContainer}>
                     <View style={{ width: '75%' }}>
                         <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
                             Change Profile Image
                         </Text>
                     </View>
 
-                    <View
-                        style={{
-                            width: '20%',
-                        }}
-                    >
+                    <View style={{ width: '20%' }}>
                         <Button
                             type="clear"
                             buttonStyle={{
@@ -89,91 +39,59 @@ const Setting = ({ navigation }: any) => {
                         />
                     </View>
                 </View>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        marginTop: 8,
-                    }}
-                >
+                <View style={styles.itemContainer}>
                     <View style={{ width: '75%' }}>
                         <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
                             Dark Mode
                         </Text>
                     </View>
 
-                    <View
-                        style={{
-                            width: '20%',
-                        }}
-                    >
+                    <View style={{ width: '20%' }}>
                         <Switch color="#F26B74" value={false} />
                     </View>
                 </View>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        marginTop: 8,
-                    }}
-                >
+                <View style={styles.itemContainer}>
                     <View style={{ width: '75%' }}>
                         <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
                             PIN Lock
                         </Text>
                     </View>
 
-                    <View
-                        style={{
-                            width: '20%',
-                        }}
-                    >
-                        <Switch color="#F26B74" value={false} />
+                    <View style={{ width: '20%' }}>
+                        <Switch
+                            color="#F26B74"
+                            value={false}
+                            onValueChange={() =>
+                                navigation.navigate('createpin')
+                            }
+                        />
                     </View>
                 </View>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        marginTop: 8,
-                    }}
-                >
+                <View style={styles.itemContainer}>
                     <View style={{ width: '75%' }}>
                         <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
                             Sync Automatically
                         </Text>
                     </View>
 
-                    <View
-                        style={{
-                            width: '20%',
-                        }}
-                    >
-                        <Switch color="#F26B74" value={false} />
+                    <View style={{ width: '20%' }}>
+                        <Switch
+                            color="#F26B74"
+                            value={false}
+                            onValueChange={() =>
+                                navigation.navigate('enterpin')
+                            }
+                        />
                     </View>
                 </View>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        marginTop: 8,
-                    }}
-                >
+                <View style={styles.itemContainer}>
                     <View style={{ width: '75%' }}>
                         <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
                             Sync Now
                         </Text>
                     </View>
 
-                    <View
-                        style={{
-                            width: '20%',
-                        }}
-                    >
+                    <View style={{ width: '20%' }}>
                         <Button
                             type="clear"
                             buttonStyle={{
@@ -199,6 +117,7 @@ const Setting = ({ navigation }: any) => {
                 titleStyle={{
                     color: theme.colors['red-75'],
                     fontWeight: 'bold',
+                    fontSize: 22,
                 }}
                 // onPress={() => navigation.navigate('welcome')}
             >
@@ -209,3 +128,20 @@ const Setting = ({ navigation }: any) => {
 }
 
 export default Setting
+
+const styles = StyleSheet.create({
+    itemsContainer: {
+        backgroundColor: 'white',
+        flex: 1,
+        borderRadius: 35,
+        paddingHorizontal: 24,
+        paddingVertical: 44,
+        marginHorizontal: 20,
+    },
+    itemContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 8,
+    },
+})

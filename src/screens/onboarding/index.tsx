@@ -35,7 +35,7 @@ const Onboarding = ({ navigation }: any) => {
     }
 
     return (
-        <SafeArea>
+        <SafeArea style={{ justifyContent: 'flex-end' }}>
             <View style={styles.imageContainer}>
                 <Image
                     style={styles.image}
@@ -114,7 +114,7 @@ const makeStyles = (theme: any) =>
     StyleSheet.create({
         imageContainer: {
             width: '100%',
-            height: '50%',
+            // height: '50%',
             justifyContent: 'flex-end',
             alignItems: 'center',
         },
@@ -145,5 +145,6 @@ const makeStyles = (theme: any) =>
             justifyContent: 'space-between',
             alignItems: 'center',
             marginTop: 40,
+            marginBottom: 60,
         },
     })

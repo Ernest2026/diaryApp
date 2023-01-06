@@ -1,10 +1,10 @@
-import { FlatList, TouchableOpacity } from 'react-native'
-import { FAB, Input, useTheme } from '@rneui/themed'
+import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { FAB, Input } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import DiaryCard, { Data } from '../../components/Card/Diary'
-import DiaryHeader from '../../components/Header/Diary'
 import DiaryDialog from '../../components/Dialog/Diary'
 import { useState } from 'react'
+import Header from '../../components/Header'
 
 export type Dialog = {
     show: boolean
@@ -85,21 +85,15 @@ const CardData: Data[] = [
 ]
 
 const HomeScreen = ({ navigation }: any) => {
-    const { theme } = useTheme()
     const [dialog, setDialog] = useState<Dialog>({ show: false, index: null })
 
     return (
-        <>
-            <DiaryHeader navigation={navigation} />
+        <View style={styles.container}>
+            <Header navigation={navigation} />
 
-            <SafeArea style={{ marginTop: 16 }}>
+            <SafeArea style={{ marginTop: 0, backgroundColor: 'transparent' }}>
                 <Input
-                    inputContainerStyle={{
-                        backgroundColor: theme.colors.white,
-                        paddingHorizontal: 17,
-                        paddingVertical: 15,
-                        borderRadius: 15,
-                    }}
+                    inputContainerStyle={styles.inputContainerStyle}
                     inputStyle={{
                         fontSize: 12,
                     }}
@@ -144,8 +138,21 @@ const HomeScreen = ({ navigation }: any) => {
             {dialog.show && (
                 <DiaryDialog setDialog={setDialog} navigation={navigation} />
             )}
-        </>
+        </View>
     )
 }
 
 export default HomeScreen
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#efeef3',
+    },
+    inputContainerStyle: {
+        backgroundColor: 'white',
+        paddingHorizontal: 17,
+        paddingVertical: 15,
+        borderRadius: 15,
+    },
+})

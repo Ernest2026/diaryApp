@@ -7,41 +7,39 @@ const Welcome = ({ navigation }: any) => {
     const { theme } = useTheme()
 
     return (
-        <SafeArea>
-            <View style={styles.wlcContainer}>
-                <Image style={styles.logo} source={icon} />
+        <SafeArea style={styles.container}>
+            <Image style={styles.logo} source={icon} />
 
-                <View>
-                    <Text h1 style={{ textAlign: 'center' }}>
-                        Welcome!
-                    </Text>
-                    <Text style={{ textAlign: 'center' }}>
-                        Sign in to enable backup and syncing for all your diary
-                        entries
-                    </Text>
-                </View>
+            <View>
+                <Text h1 style={{ textAlign: 'center' }}>
+                    Welcome!
+                </Text>
+                <Text style={{ textAlign: 'center' }}>
+                    Sign in to enable backup and syncing for all your diary
+                    entries
+                </Text>
+            </View>
 
-                <View style={styles.btnContainer}>
-                    <Button
-                        title="Create Account"
-                        containerStyle={styles.btnContainerStyle}
-                        buttonStyle={{
-                            backgroundColor: theme.colors['red-100'],
-                        }}
-                        titleStyle={styles.btnTitleStyle}
-                        onPress={() => navigation.navigate('signup')}
-                    />
+            <View style={styles.btnContainer}>
+                <Button
+                    title="Create Account"
+                    containerStyle={styles.btnContainerStyle}
+                    buttonStyle={{
+                        backgroundColor: theme.colors['red-100'],
+                    }}
+                    titleStyle={styles.btnTitleStyle}
+                    onPress={() => navigation.navigate('signup')}
+                />
 
-                    <Button
-                        title="Sign In"
-                        containerStyle={styles.btnContainerStyle}
-                        buttonStyle={{
-                            backgroundColor: theme.colors['red-100'],
-                        }}
-                        titleStyle={styles.btnTitleStyle}
-                        onPress={() => navigation.navigate('signin')}
-                    />
-                </View>
+                <Button
+                    title="Sign In"
+                    containerStyle={styles.btnContainerStyle}
+                    buttonStyle={{
+                        backgroundColor: theme.colors['red-100'],
+                    }}
+                    titleStyle={styles.btnTitleStyle}
+                    onPress={() => navigation.navigate('signin')}
+                />
             </View>
         </SafeArea>
     )
@@ -50,14 +48,14 @@ const Welcome = ({ navigation }: any) => {
 export default Welcome
 
 const styles = StyleSheet.create({
-    wlcContainer: {
-        height: '100%',
+    container: {
         alignItems: 'center',
-        justifyContent: 'space-around',
+        paddingVertical: 30,
+        justifyContent: 'space-between',
     },
     logo: {
         width: 160,
-        maxHeight: 160,
+        maxHeight: '30%',
         resizeMode: 'contain',
     },
     btnContainer: {

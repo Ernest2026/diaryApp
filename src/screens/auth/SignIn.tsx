@@ -13,38 +13,30 @@ const SignIn = ({ navigation }: any) => {
     const { theme } = useTheme()
 
     return (
-        <SafeArea>
-            <View
-                style={{
-                    flex: 1,
-                    paddingVertical: 50,
-                    justifyContent: 'space-between',
-                }}
-            >
-                <Image style={styles.logo} source={icon} />
+        <SafeArea style={styles.container}>
+            <Image style={styles.logo} source={icon} />
 
-                <View style={{ paddingVertical: 20 }}>
-                    <Text h3 style={{ textAlign: 'center', marginBottom: 24 }}>
-                        Sign In
-                    </Text>
+            <View style={{ paddingVertical: 20 }}>
+                <Text h3 style={{ textAlign: 'center', marginBottom: 24 }}>
+                    Sign In
+                </Text>
 
-                    <Text style={styles.label}>Email Address</Text>
-                    <TextInput style={styles.input} />
+                <Text style={styles.label}>Email Address</Text>
+                <TextInput style={styles.input} />
 
-                    <Text style={styles.label}>Password</Text>
-                    <TextInput style={styles.input} />
-                </View>
-
-                <Button
-                    title="Sign In"
-                    containerStyle={styles.btnContainerStyle}
-                    buttonStyle={{
-                        backgroundColor: theme.colors['red-100'],
-                    }}
-                    titleStyle={styles.btnTitleStyle}
-                    onPress={() => navigation.navigate('home')}
-                />
+                <Text style={styles.label}>Password</Text>
+                <TextInput style={styles.input} />
             </View>
+
+            <Button
+                title="Sign In"
+                containerStyle={styles.btnContainerStyle}
+                buttonStyle={{
+                    backgroundColor: theme.colors['red-100'],
+                }}
+                titleStyle={styles.btnTitleStyle}
+                onPress={() => navigation.navigate('home')}
+            />
         </SafeArea>
     )
 }
@@ -52,11 +44,15 @@ const SignIn = ({ navigation }: any) => {
 export default SignIn
 
 const styles = StyleSheet.create({
+    container: {
+        paddingVertical: 30,
+        justifyContent: 'space-between',
+    },
     logo: {
         width: 160,
         marginRight: 'auto',
         marginLeft: 'auto',
-        maxHeight: 160,
+        maxHeight: '25%',
         resizeMode: 'contain',
     },
     btnContainerStyle: {

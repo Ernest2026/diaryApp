@@ -1,14 +1,11 @@
-import { Button, Header, Icon } from '@rneui/themed'
+import { Button, Header as RNEHeader, Icon } from '@rneui/themed'
 import { Image, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import { blackLogo } from '../../../assets'
 
-const DiaryHeader = ({ navigation }: any) => {
+const Header = ({ navigation }: any) => {
     return (
-        <Header
-            containerStyle={{
-                backgroundColor: 'transparent',
-                paddingVertical: 15,
-            }}
+        <RNEHeader
+            containerStyle={styles.containerStyle}
             leftContainerStyle={{
                 justifyContent: 'flex-end',
             }}
@@ -18,10 +15,7 @@ const DiaryHeader = ({ navigation }: any) => {
             leftComponent={
                 <Button
                     type="clear"
-                    buttonStyle={{
-                        paddingHorizontal: 0,
-                        paddingVertical: 0,
-                    }}
+                    buttonStyle={styles.buttonStyle}
                     TouchableComponent={TouchableWithoutFeedback}
                     onPress={() => navigation.navigate('editentry')}
                     icon={
@@ -38,10 +32,7 @@ const DiaryHeader = ({ navigation }: any) => {
             rightComponent={
                 <Button
                     type="clear"
-                    buttonStyle={{
-                        paddingHorizontal: 0,
-                        paddingVertical: 0,
-                    }}
+                    buttonStyle={styles.buttonStyle}
                     TouchableComponent={TouchableWithoutFeedback}
                     onPress={() => navigation.navigate('setting')}
                     icon={
@@ -58,11 +49,21 @@ const DiaryHeader = ({ navigation }: any) => {
     )
 }
 
-export default DiaryHeader
+export default Header
 
 const styles = StyleSheet.create({
+    containerStyle: {
+        backgroundColor: '#efeef3s',
+        borderBottomWidth: 0,
+        paddingVertical: 15,
+        paddingHorizontal: 20,
+    },
     logo: {
         height: 49,
         resizeMode: 'contain',
+    },
+    buttonStyle: {
+        paddingHorizontal: 0,
+        paddingVertical: 0,
     },
 })

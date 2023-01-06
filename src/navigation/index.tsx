@@ -9,6 +9,10 @@ import Home from '../screens/diary/Home'
 import ViewEntry from '../screens/diary/ViewEntry'
 import EditEntry from '../screens/diary/EditEntry'
 import Setting from '../screens/setting'
+import CreatePin from '../screens/pin/CreatePin'
+import ConfirmPin from '../screens/pin/ConfirmPin'
+import SetPinSuccessfully from '../screens/pin/SetPinSuccessfully'
+import EnterPin from '../screens/pin/EnterPin'
 
 const Stack = createNativeStackNavigator()
 
@@ -22,6 +26,14 @@ const Navigation = () => {
                 {/* Onboarding screen */}
                 <Stack.Screen name="onboarding" component={Onboarding} />
                 <Stack.Screen name="welcome" component={Welcome} />
+                {/* PIN screen */}
+                <Stack.Screen name="enterpin" component={EnterPin} />
+                <Stack.Screen name="createpin" component={CreatePin} />
+                <Stack.Screen name="confirmpin" component={ConfirmPin} />
+                <Stack.Screen
+                    name="setpinsuccessfully"
+                    component={SetPinSuccessfully}
+                />
                 {/* Authentication screen */}
                 <Stack.Screen name="signup" component={SignUp} />
                 <Stack.Screen name="signin" component={SignIn} />
