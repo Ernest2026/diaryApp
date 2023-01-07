@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface UiState {
+    darkMode: boolean
     isLoggedIn: boolean
 }
 
 const initialState: UiState = {
+    darkMode: false,
     isLoggedIn: true,
 }
 
@@ -15,10 +17,13 @@ export const uiSlice = createSlice({
         logIn: (state) => {
             state.isLoggedIn = !state.isLoggedIn
         },
+        changeMode: (state) => {
+            state.darkMode = !state.darkMode
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { logIn } = uiSlice.actions
+export const { logIn, changeMode } = uiSlice.actions
 
 export default uiSlice.reducer

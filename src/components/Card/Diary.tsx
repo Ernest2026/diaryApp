@@ -1,6 +1,7 @@
 import { Card, Text } from '@rneui/themed'
 import { Image, View } from 'react-native'
 import { happy, indifferent, veryhappy, verysad } from '../../../assets/emoji'
+import { RNETheme } from '../../theme'
 
 export type Data = {
     id: number
@@ -10,7 +11,13 @@ export type Data = {
     emoji: 'veryhappy' | 'verysad' | 'happy' | 'sad' | 'indifferent'
 }
 
-const DiaryCard = ({ data: { title, text, emoji, date } }: { data: Data }) => {
+const DiaryCard = ({
+    data: { title, text, emoji, date },
+    theme,
+}: {
+    data: Data
+    theme: RNETheme
+}) => {
     let image
 
     switch (emoji) {
@@ -47,6 +54,9 @@ const DiaryCard = ({ data: { title, text, emoji, date } }: { data: Data }) => {
                     marginHorizontal: 0,
                     padding: 13,
                     borderRadius: 15,
+                    borderWidth: 0,
+                    backgroundColor:
+                        theme.mode === 'light' ? 'white' : '#242424',
                 }}
                 wrapperStyle={{
                     flexDirection: 'row',
@@ -59,7 +69,7 @@ const DiaryCard = ({ data: { title, text, emoji, date } }: { data: Data }) => {
                 >
                     <Card.Title
                         h4
-                        h4Style={{ fontSize: 20 }}
+                        h4Style={{ fontSize: 20, color: theme.colors.black }}
                         style={{
                             textAlign: 'left',
                             marginBottom: 0,

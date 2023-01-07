@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native'
-import { FAB, Input } from '@rneui/themed'
+import { FAB, Input, useTheme } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import DiaryCard, { Data } from '../../components/Card/Diary'
 import DiaryDialog from '../../components/Dialog/Diary'
@@ -7,6 +7,7 @@ import { useState } from 'react'
 import Header from '../../components/Header'
 import { RootStackParamList } from '../../navigation'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RNETheme } from '../../theme'
 
 type HomeScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -96,6 +97,8 @@ const HomeScreen = ({
 }: {
     navigation: HomeScreenNavigationProp
 }) => {
+    const { theme } = useTheme()
+    const styles = makeStyles(theme)
     const [dialog, setDialog] = useState<Dialog>({ show: false, index: null })
 
     return (
@@ -107,12 +110,16 @@ const HomeScreen = ({
                     inputContainerStyle={styles.inputContainerStyle}
                     inputStyle={{
                         fontSize: 12,
+                        color: theme.mode === 'light' ? '#C9C9DC' : '#B9B9B9',
                     }}
+                    placeholderTextColor={
+                        theme.mode === 'light' ? '#C9C9DC' : '#B9B9B9'
+                    }
                     placeholder="Search Entries"
                     rightIcon={{
                         type: 'font-awesome',
                         name: 'search',
-                        color: '#C9C9DC',
+                        color: theme.mode === 'light' ? '#C9C9DC' : '#B9B9B9',
                     }}
                 />
 
@@ -127,7 +134,7 @@ const HomeScreen = ({
                                 setDialog({ show: true, index: item.id })
                             }
                         >
-                            <DiaryCard data={item} />
+                            <DiaryCard data={item} theme={theme} />
                         </TouchableOpacity>
                     )}
                 />
@@ -155,15 +162,16 @@ const HomeScreen = ({
 
 export default HomeScreen
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#efeef3',
-    },
-    inputContainerStyle: {
-        backgroundColor: 'white',
-        paddingHorizontal: 17,
-        paddingVertical: 15,
-        borderRadius: 15,
-    },
-})
+const makeStyles = (theme: RNETheme) =>
+    StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: theme.colors['grey-100'],
+        },
+        inputContainerStyle: {
+            backgroundColor: theme.mode === 'light' ? 'white' : '#484848',
+            paddingHorizontal: 17,
+            paddingVertical: 15,
+            borderRadius: 15,
+        },
+    })

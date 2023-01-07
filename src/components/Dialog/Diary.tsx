@@ -1,14 +1,23 @@
-import { Dialog, Icon } from '@rneui/themed'
+import { Dialog, Icon, useTheme } from '@rneui/themed'
 import { Dialog as DialogType } from '../../screens/diary/Home'
 import { TouchableWithoutFeedback } from 'react-native'
+import { RootStackParamList } from '../../navigation'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+
+type DiaryDialogNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'home'
+>
 
 const DiaryDialog = ({
     setDialog,
     navigation,
 }: {
     setDialog: (data: DialogType) => void
-    navigation: any
+    navigation: DiaryDialogNavigationProp
 }) => {
+    const { theme } = useTheme()
+
     return (
         <Dialog
             isVisible={true}
@@ -18,6 +27,7 @@ const DiaryDialog = ({
                 justifyContent: 'flex-start',
                 padding: 20,
                 borderRadius: 25,
+                backgroundColor: theme.mode === 'light' ? '#FFFFFF' : '#242424',
             }}
         >
             <Dialog.Button
@@ -31,12 +41,12 @@ const DiaryDialog = ({
                     <Icon
                         name="eye"
                         type="font-awesome-5"
-                        color="black"
+                        color={theme.colors.black}
                         style={{ marginRight: 18 }}
                     />
                 }
                 titleStyle={{
-                    color: 'black',
+                    color: theme.colors.black,
                 }}
                 containerStyle={{
                     alignItems: 'flex-start',
@@ -56,12 +66,12 @@ const DiaryDialog = ({
                     <Icon
                         name="pen"
                         type="font-awesome-5"
-                        color="black"
+                        color={theme.colors.black}
                         style={{ marginRight: 18 }}
                     />
                 }
                 titleStyle={{
-                    color: 'black',
+                    color: theme.colors.black,
                 }}
                 containerStyle={{
                     alignItems: 'flex-start',

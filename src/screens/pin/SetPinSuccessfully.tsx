@@ -4,6 +4,7 @@ import { Image, StyleSheet, View } from 'react-native'
 import { clapping } from '../../../assets/auth'
 import { RootStackParamList } from '../../navigation'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RNETheme } from '../../theme'
 
 type SetPinScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -16,61 +17,64 @@ const SetPinSuccessfully = ({
     navigation: SetPinScreenNavigationProp
 }) => {
     const { theme } = useTheme()
+    const styles = makeStyles(theme)
 
     return (
-        <SafeArea>
-            <View style={styles.container}>
-                <Image style={styles.image} source={clapping} />
+        <SafeArea style={styles.container}>
+            {/* <View style={styles.container}> */}
+            <Image style={styles.image} source={clapping} />
 
-                <Text h3 style={{ textAlign: 'center' }}>
-                    You’ve successfully set a new PIN!
-                </Text>
+            <Text h3 style={{ textAlign: 'center' }}>
+                You’ve successfully set a new PIN!
+            </Text>
 
-                <Button
-                    title="Go back to settings"
-                    containerStyle={styles.btnContainerStyle}
-                    buttonStyle={{
-                        backgroundColor: theme.colors['red-100'],
-                    }}
-                    titleStyle={styles.btnTitleStyle}
-                    onPress={() => navigation.navigate('setting')}
-                />
-            </View>
+            <Button
+                title="Go back to settings"
+                containerStyle={styles.btnContainerStyle}
+                buttonStyle={{
+                    backgroundColor: theme.colors['red-100'],
+                }}
+                titleStyle={styles.btnTitleStyle}
+                onPress={() => navigation.navigate('setting')}
+            />
+            {/* </View> */}
         </SafeArea>
     )
 }
 
 export default SetPinSuccessfully
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: 100,
-        paddingBottom: 50,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    image: {
-        width: '90%',
-        resizeMode: 'contain',
-    },
-    btnContainerStyle: {
-        width: '80%',
-        borderRadius: 10,
-        marginRight: 'auto',
-        marginLeft: 'auto',
-    },
-    btnTitleStyle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    label: {
-        marginTop: 12,
-    },
-    input: {
-        backgroundColor: '#DCDBE7',
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        borderRadius: 5,
-    },
-})
+const makeStyles = (theme: RNETheme) =>
+    StyleSheet.create({
+        container: {
+            flex: 1,
+            paddingTop: 100,
+            paddingBottom: 50,
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            backgroundColor: theme.colors['grey-100'],
+        },
+        image: {
+            width: '90%',
+            resizeMode: 'contain',
+        },
+        btnContainerStyle: {
+            width: '80%',
+            borderRadius: 10,
+            marginRight: 'auto',
+            marginLeft: 'auto',
+        },
+        btnTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+        },
+        label: {
+            marginTop: 12,
+        },
+        input: {
+            backgroundColor: '#DCDBE7',
+            paddingVertical: 12,
+            paddingHorizontal: 16,
+            borderRadius: 5,
+        },
+    })

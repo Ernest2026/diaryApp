@@ -1,9 +1,10 @@
-import { Button, Text, useTheme } from '@rneui/themed'
+import { Button, Input, Text, useTheme } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
-import { Image, StyleSheet, TextInput, View } from 'react-native'
-import { icon } from '../../../assets'
+import { Image, StyleSheet, View } from 'react-native'
 import { RootStackParamList } from '../../navigation'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { icon } from '../../../assets'
+import { RNETheme } from '../../theme'
 
 type SignUpScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -12,6 +13,7 @@ type SignUpScreenNavigationProp = NativeStackNavigationProp<
 
 const SignUp = ({ navigation }: { navigation: SignUpScreenNavigationProp }) => {
     const { theme } = useTheme()
+    const styles = makeStyles(theme)
 
     return (
         <SafeArea style={styles.container}>
@@ -23,13 +25,13 @@ const SignUp = ({ navigation }: { navigation: SignUpScreenNavigationProp }) => {
                 </Text>
 
                 <Text style={styles.label}>Name</Text>
-                <TextInput style={styles.input} />
+                <Input containerStyle={styles.inputContainerStyle} />
 
                 <Text style={styles.label}>Email Address</Text>
-                <TextInput style={styles.input} />
+                <Input containerStyle={styles.inputContainerStyle} />
 
                 <Text style={styles.label}>Password</Text>
-                <TextInput style={styles.input} />
+                <Input containerStyle={styles.inputContainerStyle} />
             </View>
 
             <Button
@@ -47,35 +49,37 @@ const SignUp = ({ navigation }: { navigation: SignUpScreenNavigationProp }) => {
 
 export default SignUp
 
-const styles = StyleSheet.create({
-    container: {
-        paddingVertical: 30,
-        justifyContent: 'space-between',
-    },
-    logo: {
-        width: 160,
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        maxHeight: '25%',
-        resizeMode: 'contain',
-    },
-    btnContainerStyle: {
-        width: '80%',
-        borderRadius: 10,
-        marginRight: 'auto',
-        marginLeft: 'auto',
-    },
-    btnTitleStyle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    label: {
-        marginTop: 12,
-    },
-    input: {
-        backgroundColor: '#DCDBE7',
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        borderRadius: 5,
-    },
-})
+const makeStyles = (theme: RNETheme) =>
+    StyleSheet.create({
+        container: {
+            paddingVertical: 50,
+            justifyContent: 'space-between',
+            backgroundColor: theme.colors['grey-100'],
+        },
+        logo: {
+            width: 160,
+            marginRight: 'auto',
+            marginLeft: 'auto',
+            maxHeight: '25%',
+            resizeMode: 'contain',
+        },
+        btnContainerStyle: {
+            width: '80%',
+            borderRadius: 10,
+            marginRight: 'auto',
+            marginLeft: 'auto',
+        },
+        btnTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+        },
+        label: {
+            marginTop: 12,
+        },
+        inputContainerStyle: {
+            backgroundColor: theme.colors['grey-75'],
+            paddingVertical: 12,
+            paddingHorizontal: 16,
+            borderRadius: 5,
+        },
+    })

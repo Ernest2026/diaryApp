@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { screen1, screen2, screen3 } from '../../../assets/onboarding'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../navigation'
+import { RNETheme } from '../../theme'
 
 type OnboardingScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -46,7 +47,12 @@ const Onboarding = ({
     }
 
     return (
-        <SafeArea style={{ justifyContent: 'flex-end' }}>
+        <SafeArea
+            style={{
+                justifyContent: 'flex-end',
+                backgroundColor: theme.colors['grey-100'],
+            }}
+        >
             <View style={styles.imageContainer}>
                 <Image
                     style={styles.image}
@@ -121,7 +127,7 @@ const Onboarding = ({
 
 export default Onboarding
 
-const makeStyles = (theme: any) =>
+const makeStyles = (theme: RNETheme) =>
     StyleSheet.create({
         imageContainer: {
             width: '100%',

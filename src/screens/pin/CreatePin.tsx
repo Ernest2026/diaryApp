@@ -1,10 +1,11 @@
 import React from 'react'
 import { SafeArea } from '../../components/safearea'
-import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
-import { Button, Input, Text } from '@rneui/themed'
+import { StyleSheet, View } from 'react-native'
+import { Button, Text, useTheme } from '@rneui/themed'
 import SubHeader from '../../components/Header/SubHeader'
 import { RootStackParamList } from '../../navigation'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RNETheme } from '../../theme'
 
 type CreatePinScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -16,14 +17,11 @@ const CreatePin = ({
 }: {
     navigation: CreatePinScreenNavigationProp
 }) => {
+    const { theme } = useTheme()
+    const styles = makeStyles(theme)
+
     return (
-        <SafeArea
-            style={{
-                paddingRight: 0,
-                paddingLeft: 0,
-                justifyContent: 'space-between',
-            }}
-        >
+        <SafeArea style={styles.container}>
             <SubHeader title="Create PIN" navigation={navigation} />
 
             <View style={{ marginHorizontal: 20, alignItems: 'center' }}>
@@ -128,6 +126,7 @@ const CreatePin = ({
                             name: 'backspace',
                             type: 'font-awesome-5',
                             size: 32,
+                            color: theme.colors.black,
                         }}
                         buttonStyle={styles.textButtonStyle}
                     />
@@ -139,44 +138,51 @@ const CreatePin = ({
 
 export default CreatePin
 
-const styles = StyleSheet.create({
-    dotsContainer: {
-        flexDirection: 'row',
-        marginTop: 20,
-        width: 250,
-        justifyContent: 'space-between',
-    },
-    dotContainer: {
-        width: 42,
-        height: 42,
-        borderRadius: 10,
-        backgroundColor: '#C9C9DC',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    dot: {
-        width: 10,
-        height: 10,
-        backgroundColor: 'black',
-        borderRadius: 5,
-    },
-    numberContainer: {
-        marginHorizontal: 20,
-        alignItems: 'center',
-        marginBottom: 40,
-    },
-    numberRow: {
-        flexDirection: 'row',
-        width: 300,
-        justifyContent: 'space-between',
-    },
-    textButtonStyle: {
-        minWidth: 72,
-        minHeight: 78,
-    },
-    textTitleStyle: {
-        color: 'black',
-        fontSize: 40,
-        fontWeight: 'bold',
-    },
-})
+const makeStyles = (theme: RNETheme) =>
+    StyleSheet.create({
+        container: {
+            paddingRight: 0,
+            paddingLeft: 0,
+            backgroundColor: theme.colors['grey-100'],
+            justifyContent: 'space-between',
+        },
+        dotsContainer: {
+            flexDirection: 'row',
+            marginTop: 20,
+            width: 250,
+            justifyContent: 'space-between',
+        },
+        dotContainer: {
+            width: 42,
+            height: 42,
+            borderRadius: 10,
+            backgroundColor: '#C9C9DC',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        dot: {
+            width: 10,
+            height: 10,
+            backgroundColor: 'black',
+            borderRadius: 5,
+        },
+        numberContainer: {
+            marginHorizontal: 20,
+            alignItems: 'center',
+            marginBottom: 40,
+        },
+        numberRow: {
+            flexDirection: 'row',
+            width: 300,
+            justifyContent: 'space-between',
+        },
+        textButtonStyle: {
+            minWidth: 72,
+            minHeight: 78,
+        },
+        textTitleStyle: {
+            color: theme.colors.black,
+            fontSize: 40,
+            fontWeight: 'bold',
+        },
+    })

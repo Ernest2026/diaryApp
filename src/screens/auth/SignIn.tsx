@@ -10,6 +10,7 @@ import {
 import { icon } from '../../../assets'
 import { RootStackParamList } from '../../navigation'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RNETheme } from '../../theme'
 
 type SignInScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -18,6 +19,7 @@ type SignInScreenNavigationProp = NativeStackNavigationProp<
 
 const SignIn = ({ navigation }: { navigation: SignInScreenNavigationProp }) => {
     const { theme } = useTheme()
+    const styles = makeStyles(theme)
 
     return (
         <SafeArea style={styles.container}>
@@ -29,10 +31,10 @@ const SignIn = ({ navigation }: { navigation: SignInScreenNavigationProp }) => {
                 </Text>
 
                 <Text style={styles.label}>Email Address</Text>
-                <TextInput style={styles.input} />
+                <Input containerStyle={styles.inputContainerStyle} />
 
                 <Text style={styles.label}>Password</Text>
-                <TextInput style={styles.input} />
+                <Input containerStyle={styles.inputContainerStyle} />
             </View>
 
             <Button
@@ -50,35 +52,37 @@ const SignIn = ({ navigation }: { navigation: SignInScreenNavigationProp }) => {
 
 export default SignIn
 
-const styles = StyleSheet.create({
-    container: {
-        paddingVertical: 30,
-        justifyContent: 'space-between',
-    },
-    logo: {
-        width: 160,
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        maxHeight: '25%',
-        resizeMode: 'contain',
-    },
-    btnContainerStyle: {
-        width: '80%',
-        borderRadius: 10,
-        marginRight: 'auto',
-        marginLeft: 'auto',
-    },
-    btnTitleStyle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    label: {
-        marginTop: 12,
-    },
-    input: {
-        backgroundColor: '#DCDBE7',
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        borderRadius: 5,
-    },
-})
+const makeStyles = (theme: RNETheme) =>
+    StyleSheet.create({
+        container: {
+            paddingVertical: 30,
+            justifyContent: 'space-between',
+            backgroundColor: theme.colors['grey-100'],
+        },
+        logo: {
+            width: 160,
+            marginRight: 'auto',
+            marginLeft: 'auto',
+            maxHeight: '25%',
+            resizeMode: 'contain',
+        },
+        btnContainerStyle: {
+            width: '80%',
+            borderRadius: 10,
+            marginRight: 'auto',
+            marginLeft: 'auto',
+        },
+        btnTitleStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+        },
+        label: {
+            marginTop: 12,
+        },
+        inputContainerStyle: {
+            backgroundColor: theme.colors['grey-75'],
+            paddingVertical: 12,
+            paddingHorizontal: 16,
+            borderRadius: 5,
+        },
+    })

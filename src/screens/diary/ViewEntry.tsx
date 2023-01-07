@@ -1,10 +1,11 @@
-import { FAB, Icon, Text } from '@rneui/themed'
+import { Colors, FAB, Icon, Text, Theme, useTheme } from '@rneui/themed'
 import { SafeArea } from '../../components/safearea'
 import { Image, ScrollView, StyleSheet, TextInput, View } from 'react-native'
 import { veryhappy } from '../../../assets/emoji'
 import SubHeader from '../../components/Header/SubHeader'
 import { RootStackParamList } from '../../navigation'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RNETheme } from '../../theme'
 
 type ViewEntryScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -16,8 +17,11 @@ const ViewEntry = ({
 }: {
     navigation: ViewEntryScreenNavigationProp
 }) => {
+    const { theme } = useTheme()
+    const styles = makeStyles(theme)
+
     return (
-        <SafeArea style={{ paddingRight: 0, paddingLeft: 0 }}>
+        <SafeArea style={styles.container}>
             <SubHeader title="View Entry" navigation={navigation} />
 
             <View
@@ -76,13 +80,19 @@ const ViewEntry = ({
 
 export default ViewEntry
 
-const styles = StyleSheet.create({
-    textContainer: {
-        backgroundColor: 'white',
-        borderTopLeftRadius: 60,
-        borderTopRightRadius: 60,
-        paddingHorizontal: 32,
-        paddingVertical: 16,
-        flex: 1,
-    },
-})
+const makeStyles = (theme: RNETheme) =>
+    StyleSheet.create({
+        container: {
+            paddingRight: 0,
+            paddingLeft: 0,
+            backgroundColor: theme.colors['grey-100'],
+        },
+        textContainer: {
+            backgroundColor: theme.mode === 'light' ? '#FFFFFF' : '#484848',
+            borderTopLeftRadius: 60,
+            borderTopRightRadius: 60,
+            paddingHorizontal: 32,
+            paddingVertical: 16,
+            flex: 1,
+        },
+    })

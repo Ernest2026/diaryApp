@@ -7,7 +7,7 @@ import {
     View,
 } from 'react-native'
 import { SafeArea } from '../../components/safearea'
-import { Button, Icon, Image, Text } from '@rneui/themed'
+import { Button, Icon, Image, Text, useTheme } from '@rneui/themed'
 import { useEffect, useState } from 'react'
 import {
     angry,
@@ -22,6 +22,7 @@ import {
 import SubHeader from '../../components/Header/SubHeader'
 import { RootStackParamList } from '../../navigation'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RNETheme } from '../../theme'
 
 type EditEntryScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -73,6 +74,9 @@ const EditEntry = ({
         'Today, my summer holidays have begun. I have some plans for summer vacation. I’m planning to go to a wildlife sanctuary and for boating in a lake. I just don’t want to spend a single moment idly and definitely want to enjoy every bit of these holidays.\n\nLast year, I did not plan my vacations, but this year, I will do everything to make them interesting. I now need to go. I’m excited and eagerly looking forward to my holidays.\n\nLast year, I did not plan my vacations, but this year, I will do everything to make them interesting. I now need to go. I’m excited and eagerly looking forward to my holidays.\n\njdjddjdj'
     )
 
+    const { theme } = useTheme()
+    const styles = makeStyles(theme)
+
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener(
             'keyboardDidShow',
@@ -94,12 +98,13 @@ const EditEntry = ({
     }, [])
 
     return (
-        <SafeArea style={{ paddingRight: 0, paddingLeft: 0 }}>
+        <SafeArea style={styles.container}>
             <SubHeader title="Edit Entry" navigation={navigation} />
 
             <View
                 style={{
-                    backgroundColor: 'white',
+                    backgroundColor:
+                        theme.mode === 'light' ? '#FFFFFF' : '#484848',
                     paddingHorizontal: 20,
                     paddingVertical: 8,
                 }}
@@ -142,7 +147,7 @@ const EditEntry = ({
                                     type="font-awesome-5"
                                     name={value}
                                     size={32}
-                                    color="black"
+                                    color={theme.colors.black}
                                 />
                             }
                         />
@@ -150,22 +155,17 @@ const EditEntry = ({
                 </ScrollView>
             </View>
 
-            <View
-                style={{
-                    backgroundColor: 'white',
-                    borderTopLeftRadius: 40,
-                    borderTopRightRadius: 40,
-                    paddingHorizontal: 20,
-                    paddingTop: 16,
-                    flex: 1,
-                }}
-            >
+            <View style={styles.textContainer}>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <TextInput
                         multiline
                         onChangeText={(text) => setText(text)}
                         value={text}
-                        style={{ height: '100%', fontSize: 20 }}
+                        style={{
+                            height: '100%',
+                            fontSize: 20,
+                            color: theme.colors.black,
+                        }}
                     />
                 </ScrollView>
             </View>
@@ -240,26 +240,41 @@ const EditEntry = ({
 
 export default EditEntry
 
-const styles = StyleSheet.create({
-    btnStyle: {
-        paddingHorizontal: 5,
-        paddingVertical: 5,
-        marginHorizontal: 5,
-        borderWidth: 3,
-        borderRadius: 50,
-        borderColor: 'transparent',
-    },
-    activeBtnStyle: {
-        paddingHorizontal: 5,
-        paddingVertical: 5,
-        marginHorizontal: 5,
-        borderWidth: 3,
-        borderRadius: 50,
-        borderColor: '#EE3A46',
-        backgroundColor: '#F69CA2',
-    },
-    mood: {
-        paddingHorizontal: 20,
-        flexDirection: 'row',
-    },
-})
+const makeStyles = (theme: RNETheme) =>
+    StyleSheet.create({
+        container: {
+            paddingRight: 0,
+            paddingLeft: 0,
+            backgroundColor: theme.colors['grey-100'],
+        },
+        btnStyle: {
+            paddingHorizontal: 5,
+            paddingVertical: 5,
+            marginHorizontal: 5,
+            borderWidth: 3,
+            borderRadius: 50,
+            borderColor: 'transparent',
+        },
+        activeBtnStyle: {
+            paddingHorizontal: 5,
+            paddingVertical: 5,
+            marginHorizontal: 5,
+            borderWidth: 3,
+            borderRadius: 50,
+            borderColor: '#EE3A46',
+            backgroundColor: '#F69CA2',
+        },
+        textContainer: {
+            backgroundColor: theme.mode === 'light' ? '#FFFFFF' : '#484848',
+            opacity: 1,
+            borderTopLeftRadius: 40,
+            borderTopRightRadius: 40,
+            paddingHorizontal: 20,
+            paddingTop: 16,
+            flex: 1,
+        },
+        mood: {
+            paddingHorizontal: 20,
+            flexDirection: 'row',
+        },
+    })

@@ -18,7 +18,12 @@ const Welcome = ({
     const { theme } = useTheme()
 
     return (
-        <SafeArea style={styles.container}>
+        <SafeArea
+            style={{
+                ...styles.container,
+                backgroundColor: theme.colors['grey-100'],
+            }}
+        >
             <Image style={styles.logo} source={icon} />
 
             <View>

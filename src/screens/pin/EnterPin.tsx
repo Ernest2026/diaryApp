@@ -1,10 +1,11 @@
 import React from 'react'
 import { SafeArea } from '../../components/safearea'
 import { Image, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
-import { Button, Input, Text } from '@rneui/themed'
+import { Button, Input, Text, useTheme } from '@rneui/themed'
 import { john } from '../../../assets/emoji'
 import { RootStackParamList } from '../../navigation'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RNETheme } from '../../theme'
 
 type EnterPinScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -16,10 +17,11 @@ const EnterPin = ({
 }: {
     navigation: EnterPinScreenNavigationProp
 }) => {
+    const { theme } = useTheme()
+    const styles = makeStyles(theme)
+
     return (
-        <SafeArea
-            style={{ paddingVertical: 40, justifyContent: 'space-between' }}
-        >
+        <SafeArea style={styles.container}>
             <View style={{ alignItems: 'center' }}>
                 <Image source={john} style={styles.image} />
                 <Text h1 h1Style={{ fontSize: 30, textAlign: 'center' }}>
@@ -125,6 +127,7 @@ const EnterPin = ({
                             name: 'backspace',
                             type: 'font-awesome-5',
                             size: 32,
+                            color: theme.colors.black,
                         }}
                         buttonStyle={styles.textButtonStyle}
                     />
@@ -136,48 +139,54 @@ const EnterPin = ({
 
 export default EnterPin
 
-const styles = StyleSheet.create({
-    image: {
-        width: 128,
-        maxHeight: '40%',
-        resizeMode: 'contain',
-    },
-    dotsContainer: {
-        flexDirection: 'row',
-        marginTop: 20,
-        width: 250,
-        justifyContent: 'space-between',
-    },
-    dotContainer: {
-        width: 42,
-        height: 42,
-        borderRadius: 10,
-        backgroundColor: '#C9C9DC',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    dot: {
-        width: 10,
-        height: 10,
-        backgroundColor: 'black',
-        borderRadius: 5,
-    },
-    numberContainer: {
-        marginHorizontal: 20,
-        alignItems: 'center',
-    },
-    numberRow: {
-        flexDirection: 'row',
-        width: 300,
-        justifyContent: 'space-between',
-    },
-    textButtonStyle: {
-        minWidth: 72,
-        minHeight: 78,
-    },
-    textTitleStyle: {
-        color: 'black',
-        fontSize: 40,
-        fontWeight: 'bold',
-    },
-})
+const makeStyles = (theme: RNETheme) =>
+    StyleSheet.create({
+        container: {
+            paddingVertical: 40,
+            justifyContent: 'space-between',
+            backgroundColor: theme.colors['grey-100'],
+        },
+        image: {
+            width: 128,
+            maxHeight: '40%',
+            resizeMode: 'contain',
+        },
+        dotsContainer: {
+            flexDirection: 'row',
+            marginTop: 20,
+            width: 250,
+            justifyContent: 'space-between',
+        },
+        dotContainer: {
+            width: 42,
+            height: 42,
+            borderRadius: 10,
+            backgroundColor: '#C9C9DC',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        dot: {
+            width: 10,
+            height: 10,
+            backgroundColor: 'black',
+            borderRadius: 5,
+        },
+        numberContainer: {
+            marginHorizontal: 20,
+            alignItems: 'center',
+        },
+        numberRow: {
+            flexDirection: 'row',
+            width: 300,
+            justifyContent: 'space-between',
+        },
+        textButtonStyle: {
+            minWidth: 72,
+            minHeight: 78,
+        },
+        textTitleStyle: {
+            color: theme.colors.black,
+            fontSize: 40,
+            fontWeight: 'bold',
+        },
+    })
