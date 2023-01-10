@@ -15,6 +15,8 @@ import SetPinSuccessfully from '../screens/pin/SetPinSuccessfully'
 import EnterPin from '../screens/pin/EnterPin'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store'
+import { getItem } from '../hooks/useSecureStore'
+import { useEffect, useLayoutEffect, useState } from 'react'
 
 export type RootStackParamList = {
     home: undefined
@@ -36,11 +38,27 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const Navigation = () => {
     const isLoggedIn = useSelector((state: RootState) => state.ui.isLoggedIn)
+    const [pinLock, setPinLock] = useState(false)
+
+    // useEffect(() => {
+    const checkPinLock = async () => {
+        const { status } = await getItem('pin')
+        setPinLock(status)
+        return 'kekek'
+        // console.log(status)
+        // return !isLoggedIn ? 'onboarding' : status ? 'enterpin' : 'home'
+    }
+
+    // checkPinLock()
+    console.log(pinLock)
+    // }, [])
 
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="onboarding"
+                initialRouteName={
+                    !isLoggedIn ? 'onboarding' : pinLock ? 'enterpin' : 'home'
+                }
                 screenOptions={{ headerShown: false }}
             >
                 {isLoggedIn ? (

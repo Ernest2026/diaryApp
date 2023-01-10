@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import uiReducer from './uiSlice'
+import pinReducer from './pinSlice'
 
 export const store = configureStore({
     reducer: {
         ui: uiReducer,
+        pin: pinReducer,
     },
 })
 

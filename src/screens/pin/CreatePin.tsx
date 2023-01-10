@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeArea } from '../../components/safearea'
 import { StyleSheet, View } from 'react-native'
-import { Button, Text, useTheme } from '@rneui/themed'
+import { Button, Input, Text, useTheme } from '@rneui/themed'
 import SubHeader from '../../components/Header/SubHeader'
 import { RootStackParamList } from '../../navigation'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RNETheme } from '../../theme'
+import { useDispatch, useSelector } from 'react-redux'
+import { addInitialPin } from '../../store/pinSlice'
+import { RootState } from '../../store'
 
 type CreatePinScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -17,8 +20,27 @@ const CreatePin = ({
 }: {
     navigation: CreatePinScreenNavigationProp
 }) => {
+    const [pin, setPin] = useState('')
+    const dispatch = useDispatch()
+
     const { theme } = useTheme()
     const styles = makeStyles(theme)
+
+    const handlePinPress = (pinVal: string, value: string) => {
+        const newPin = pinVal + value
+
+        if (pinVal.length < 3) {
+            setPin(newPin)
+        } else {
+            setPin('')
+            dispatch(addInitialPin(newPin))
+            navigation.navigate('confirmpin')
+        }
+    }
+
+    const handleDeletePinPress = () => {
+        setPin((oldPin) => oldPin.slice(0, -1))
+    }
 
     return (
         <SafeArea style={styles.container}>
@@ -30,18 +52,15 @@ const CreatePin = ({
                 </Text>
                 <Text style={{ fontSize: 14 }}>Please enter your passcode</Text>
                 <View style={styles.dotsContainer}>
-                    <View style={styles.dotContainer}>
-                        <View style={styles.dot}></View>
-                    </View>
-                    <View style={styles.dotContainer}>
-                        <View style={styles.dot}></View>
-                    </View>
-                    <View style={styles.dotContainer}>
-                        <View style={styles.dot}></View>
-                    </View>
-                    <View style={styles.dotContainer}>
-                        <View style={styles.dot}></View>
-                    </View>
+                    {[1, 2, 3, 4].map((idx) => {
+                        return (
+                            <View key={idx} style={styles.dotContainer}>
+                                {pin.length >= idx && (
+                                    <View style={styles.dot}></View>
+                                )}
+                            </View>
+                        )
+                    })}
                 </View>
             </View>
 
@@ -50,18 +69,21 @@ const CreatePin = ({
                     <Button
                         type="clear"
                         title="1"
+                        onPress={() => handlePinPress(pin, '1')}
                         buttonStyle={styles.textButtonStyle}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
                         type="clear"
                         title="2"
+                        onPress={() => handlePinPress(pin, '2')}
                         buttonStyle={styles.textButtonStyle}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
                         type="clear"
                         title="3"
+                        onPress={() => handlePinPress(pin, '3')}
                         buttonStyle={styles.textButtonStyle}
                         titleStyle={styles.textTitleStyle}
                     />
@@ -70,18 +92,21 @@ const CreatePin = ({
                     <Button
                         type="clear"
                         title="4"
+                        onPress={() => handlePinPress(pin, '4')}
                         buttonStyle={styles.textButtonStyle}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
                         type="clear"
                         title="5"
+                        onPress={() => handlePinPress(pin, '5')}
                         buttonStyle={styles.textButtonStyle}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
                         type="clear"
                         title="6"
+                        onPress={() => handlePinPress(pin, '6')}
                         buttonStyle={styles.textButtonStyle}
                         titleStyle={styles.textTitleStyle}
                     />
@@ -90,18 +115,21 @@ const CreatePin = ({
                     <Button
                         type="clear"
                         title="7"
+                        onPress={() => handlePinPress(pin, '7')}
                         buttonStyle={styles.textButtonStyle}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
                         type="clear"
                         title="8"
+                        onPress={() => handlePinPress(pin, '8')}
                         buttonStyle={styles.textButtonStyle}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
                         type="clear"
                         title="9"
+                        onPress={() => handlePinPress(pin, '9')}
                         buttonStyle={styles.textButtonStyle}
                         titleStyle={styles.textTitleStyle}
                     />
@@ -117,6 +145,7 @@ const CreatePin = ({
                     <Button
                         type="clear"
                         title="0"
+                        onPress={() => handlePinPress(pin, '0')}
                         buttonStyle={styles.textButtonStyle}
                         titleStyle={styles.textTitleStyle}
                     />
@@ -128,6 +157,7 @@ const CreatePin = ({
                             size: 32,
                             color: theme.colors.black,
                         }}
+                        onPress={handleDeletePinPress}
                         buttonStyle={styles.textButtonStyle}
                     />
                 </View>
