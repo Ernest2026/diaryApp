@@ -6,7 +6,5 @@ export const SafeArea = styled(SafeAreaView)`
     flex: 1;
     padding-right: 20px;
     padding-left: 20px;
-    ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
+    ${StatusBar.currentHeight && `padding-top: ${StatusBar.currentHeight}px`};
 `
-
-// background-color: #efeef3;

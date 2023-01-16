@@ -14,6 +14,9 @@ const Header = ({ navigation }: { navigation: HeaderNavigationProp }) => {
     const { theme, updateTheme } = useTheme()
     return (
         <RNEHeader
+            statusBarProps={{
+                backgroundColor: 'transparent',
+            }}
             containerStyle={styles.containerStyle}
             leftContainerStyle={{
                 justifyContent: 'flex-end',

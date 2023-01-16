@@ -18,44 +18,41 @@ const Welcome = ({
     const { theme } = useTheme()
 
     return (
-        <SafeArea
-            style={{
-                ...styles.container,
-                backgroundColor: theme.colors['grey-100'],
-            }}
-        >
-            <Image style={styles.logo} source={icon} />
+        <SafeArea style={{ backgroundColor: theme.colors['grey-100'] }}>
+            <View style={styles.screenContainer}>
+                <Image style={styles.logo} source={icon} />
 
-            <View>
-                <Text h1 style={{ textAlign: 'center' }}>
-                    Welcome!
-                </Text>
-                <Text style={{ textAlign: 'center' }}>
-                    Sign in to enable backup and syncing for all your diary
-                    entries
-                </Text>
-            </View>
+                <View>
+                    <Text h1 style={{ textAlign: 'center' }}>
+                        Welcome!
+                    </Text>
+                    <Text style={{ textAlign: 'center' }}>
+                        Sign in to enable backup and syncing for all your diary
+                        entries
+                    </Text>
+                </View>
 
-            <View style={styles.btnContainer}>
-                <Button
-                    title="Create Account"
-                    containerStyle={styles.btnContainerStyle}
-                    buttonStyle={{
-                        backgroundColor: theme.colors['red-100'],
-                    }}
-                    titleStyle={styles.btnTitleStyle}
-                    onPress={() => navigation.navigate('signup')}
-                />
+                <View style={styles.btnContainer}>
+                    <Button
+                        title="Create Account"
+                        containerStyle={styles.btnContainerStyle}
+                        buttonStyle={{
+                            backgroundColor: theme.colors['red-100'],
+                        }}
+                        titleStyle={styles.btnTitleStyle}
+                        onPress={() => navigation.navigate('signup')}
+                    />
 
-                <Button
-                    title="Sign In"
-                    containerStyle={styles.btnContainerStyle}
-                    buttonStyle={{
-                        backgroundColor: theme.colors['red-100'],
-                    }}
-                    titleStyle={styles.btnTitleStyle}
-                    onPress={() => navigation.navigate('signin')}
-                />
+                    <Button
+                        title="Sign In"
+                        containerStyle={styles.btnContainerStyle}
+                        buttonStyle={{
+                            backgroundColor: theme.colors['red-100'],
+                        }}
+                        titleStyle={styles.btnTitleStyle}
+                        onPress={() => navigation.navigate('signin')}
+                    />
+                </View>
             </View>
         </SafeArea>
     )
@@ -64,9 +61,10 @@ const Welcome = ({
 export default Welcome
 
 const styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
+    screenContainer: {
+        flex: 1,
         paddingVertical: 30,
+        alignItems: 'center',
         justifyContent: 'space-between',
     },
     logo: {

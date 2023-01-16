@@ -20,24 +20,24 @@ const SetPinSuccessfully = ({
     const styles = makeStyles(theme)
 
     return (
-        <SafeArea style={styles.container}>
-            {/* <View style={styles.container}> */}
-            <Image style={styles.image} source={clapping} />
+        <SafeArea style={{ backgroundColor: theme.colors['grey-100'] }}>
+            <View style={styles.screenContainer}>
+                <Image style={styles.image} source={clapping} />
 
-            <Text h3 style={{ textAlign: 'center' }}>
-                You’ve successfully set a new PIN!
-            </Text>
+                <Text h3 style={{ textAlign: 'center' }}>
+                    You’ve successfully set a new PIN!
+                </Text>
 
-            <Button
-                title="Go back to settings"
-                containerStyle={styles.btnContainerStyle}
-                buttonStyle={{
-                    backgroundColor: theme.colors['red-100'],
-                }}
-                titleStyle={styles.btnTitleStyle}
-                onPress={() => navigation.navigate('setting')}
-            />
-            {/* </View> */}
+                <Button
+                    title="Go back to settings"
+                    containerStyle={styles.btnContainerStyle}
+                    buttonStyle={{
+                        backgroundColor: theme.colors['red-100'],
+                    }}
+                    titleStyle={styles.btnTitleStyle}
+                    onPress={() => navigation.navigate('setting')}
+                />
+            </View>
         </SafeArea>
     )
 }
@@ -46,13 +46,11 @@ export default SetPinSuccessfully
 
 const makeStyles = (theme: RNETheme) =>
     StyleSheet.create({
-        container: {
+        screenContainer: {
             flex: 1,
-            paddingTop: 100,
-            paddingBottom: 50,
+            paddingVertical: 50,
             alignItems: 'center',
             justifyContent: 'space-between',
-            backgroundColor: theme.colors['grey-100'],
         },
         image: {
             width: '90%',

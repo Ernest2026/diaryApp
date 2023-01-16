@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import { SafeArea } from '../../components/safearea'
 import { Button, Icon, Image, Text, useTheme } from '@rneui/themed'
-import { useEffect, useState } from 'react'
+import { SetStateAction, useEffect, useRef, useState } from 'react'
 import {
     angry,
     depressed,
@@ -23,6 +23,7 @@ import SubHeader from '../../components/Header/SubHeader'
 import { RootStackParamList } from '../../navigation'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RNETheme } from '../../theme'
+import { RichEditor, RichToolbar, actions } from 'react-native-pell-rich-editor'
 
 type EditEntryScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -77,6 +78,21 @@ const EditEntry = ({
     const { theme } = useTheme()
     const styles = makeStyles(theme)
 
+    const richText = useRef()
+
+    const [descHTML, setDescHTML] = useState('')
+    const [showDescError, setShowDescError] = useState(false)
+
+    const richTextHandle = (descriptionText: SetStateAction<string>) => {
+        if (descriptionText) {
+            setShowDescError(false)
+            setDescHTML(descriptionText)
+        } else {
+            setShowDescError(true)
+            setDescHTML('')
+        }
+    }
+
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener(
             'keyboardDidShow',
@@ -118,13 +134,34 @@ const EditEntry = ({
             <View
                 style={{
                     flexDirection: 'row',
-                    margin: 20,
+                    marginHorizontal: 20,
+                    marginVertical: 20,
                 }}
             >
                 <ScrollView
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                 >
+                    {/* <RichToolbar
+                    editor={richText}
+                    selectedIconTint="#873c1e"
+                    iconTint="#312921"
+                    actions={[
+                        actions.alignLeft,
+                        actions.alignCenter,
+                        actions.alignRight,
+                        actions.setBold,
+                        actions.setItalic,
+                        actions.setUnderline,
+                        actions.setStrikethrough,
+                        actions.indent,
+                        actions.outdent,
+                        actions.insertBulletsList,
+                        actions.insertOrderedList,
+                        actions.insertLink,
+                    ]}
+                    style={styles.richTextToolbarStyle}
+                /> */}
                     {[
                         'align-left',
                         'align-center',
@@ -157,6 +194,14 @@ const EditEntry = ({
 
             <View style={styles.textContainer}>
                 <ScrollView showsVerticalScrollIndicator={false}>
+                    {/* <RichEditor
+                        ref={richText}
+                        onChange={richTextHandle}
+                        placeholder="Write your cool content here :)"
+                        androidHardwareAccelerationDisabled={true}
+                        style={styles.richTextEditorStyle}
+                        initialHeight={250}
+                    /> */}
                     <TextInput
                         multiline
                         onChangeText={(text) => setText(text)}
@@ -263,6 +308,30 @@ const makeStyles = (theme: RNETheme) =>
             borderRadius: 50,
             borderColor: '#EE3A46',
             backgroundColor: '#F69CA2',
+        },
+        richTextEditorStyle: {
+            // borderBottomLeftRadius: 10,
+            // borderBottomRightRadius: 10,
+            // borderWidth: 1,
+            // borderColor: '#ccaf9b',
+            // shadowColor: '#000',
+            // shadowOffset: {
+            //     width: 0,
+            //     height: 2,
+            // },
+            // shadowOpacity: 0.23,
+            // shadowRadius: 2.62,
+            elevation: 4,
+            fontSize: 20,
+        },
+        richTextToolbarStyle: {
+            width: '100%',
+            // backgroundColor: '#c6c3b3',
+            // padding: 0,
+            // borderColor: '#c6c3b3',
+            // borderTopLeftRadius: 10,
+            // borderTopRightRadius: 10,
+            // borderWidth: 1,
         },
         textContainer: {
             backgroundColor: theme.mode === 'light' ? '#FFFFFF' : '#484848',

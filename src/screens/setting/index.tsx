@@ -154,7 +154,7 @@ const Setting = ({
                     fontWeight: 'bold',
                     fontSize: 22,
                 }}
-                // onPress={() => navigation.navigate('welcome')}
+                onPress={() => navigation.navigate('welcome')}
             >
                 Logout
             </Button>

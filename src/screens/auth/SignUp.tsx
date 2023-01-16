@@ -16,33 +16,35 @@ const SignUp = ({ navigation }: { navigation: SignUpScreenNavigationProp }) => {
     const styles = makeStyles(theme)
 
     return (
-        <SafeArea style={styles.container}>
-            <Image style={styles.logo} source={icon} />
+        <SafeArea style={{ backgroundColor: theme.colors['grey-100'] }}>
+            <View style={styles.screenContainer}>
+                <Image style={styles.logo} source={icon} />
 
-            <View style={{ paddingBottom: 20 }}>
-                <Text h3 style={{ textAlign: 'center', marginBottom: 24 }}>
-                    Sign Up
-                </Text>
+                <View style={{ paddingBottom: 20 }}>
+                    <Text h3 style={{ textAlign: 'center', marginBottom: 24 }}>
+                        Sign Up
+                    </Text>
 
-                <Text style={styles.label}>Name</Text>
-                <Input containerStyle={styles.inputContainerStyle} />
+                    <Text style={styles.label}>Name</Text>
+                    <Input containerStyle={styles.inputContainerStyle} />
 
-                <Text style={styles.label}>Email Address</Text>
-                <Input containerStyle={styles.inputContainerStyle} />
+                    <Text style={styles.label}>Email Address</Text>
+                    <Input containerStyle={styles.inputContainerStyle} />
 
-                <Text style={styles.label}>Password</Text>
-                <Input containerStyle={styles.inputContainerStyle} />
+                    <Text style={styles.label}>Password</Text>
+                    <Input containerStyle={styles.inputContainerStyle} />
+                </View>
+
+                <Button
+                    title="Sign Up"
+                    containerStyle={styles.btnContainerStyle}
+                    buttonStyle={{
+                        backgroundColor: theme.colors['red-100'],
+                    }}
+                    titleStyle={styles.btnTitleStyle}
+                    onPress={() => navigation.navigate('signupconfirmed')}
+                />
             </View>
-
-            <Button
-                title="Sign Up"
-                containerStyle={styles.btnContainerStyle}
-                buttonStyle={{
-                    backgroundColor: theme.colors['red-100'],
-                }}
-                titleStyle={styles.btnTitleStyle}
-                onPress={() => navigation.navigate('signupconfirmed')}
-            />
         </SafeArea>
     )
 }
@@ -51,10 +53,10 @@ export default SignUp
 
 const makeStyles = (theme: RNETheme) =>
     StyleSheet.create({
-        container: {
+        screenContainer: {
+            flex: 1,
             paddingVertical: 50,
             justifyContent: 'space-between',
-            backgroundColor: theme.colors['grey-100'],
         },
         logo: {
             width: 160,

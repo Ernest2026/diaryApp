@@ -7,7 +7,7 @@ export interface UiState {
 
 const initialState: UiState = {
     darkMode: false,
-    isLoggedIn: true,
+    isLoggedIn: false,
 }
 
 export const uiSlice = createSlice({

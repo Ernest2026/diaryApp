@@ -21,116 +21,120 @@ const EnterPin = ({
     const styles = makeStyles(theme)
 
     return (
-        <SafeArea style={styles.container}>
-            <View style={{ alignItems: 'center' }}>
-                <Image source={john} style={styles.image} />
-                <Text h1 h1Style={{ fontSize: 30, textAlign: 'center' }}>
-                    Welcome, John
-                </Text>
-                <Text style={{ fontSize: 14 }}>Please enter your passcode</Text>
-                <View style={styles.dotsContainer}>
-                    <View style={styles.dotContainer}>
-                        <View style={styles.dot}></View>
-                    </View>
-                    <View style={styles.dotContainer}>
-                        <View style={styles.dot}></View>
-                    </View>
-                    <View style={styles.dotContainer}>
-                        <View style={styles.dot}></View>
-                    </View>
-                    <View style={styles.dotContainer}>
-                        <View style={styles.dot}></View>
+        <SafeArea style={{ backgroundColor: theme.colors['grey-100'] }}>
+            <View style={styles.screenContainer}>
+                <View style={{ alignItems: 'center' }}>
+                    <Image source={john} style={styles.image} />
+                    <Text h1 h1Style={{ fontSize: 30, textAlign: 'center' }}>
+                        Welcome, John
+                    </Text>
+                    <Text style={{ fontSize: 14 }}>
+                        Please enter your passcode
+                    </Text>
+                    <View style={styles.dotsContainer}>
+                        <View style={styles.dotContainer}>
+                            <View style={styles.dot}></View>
+                        </View>
+                        <View style={styles.dotContainer}>
+                            <View style={styles.dot}></View>
+                        </View>
+                        <View style={styles.dotContainer}>
+                            <View style={styles.dot}></View>
+                        </View>
+                        <View style={styles.dotContainer}>
+                            <View style={styles.dot}></View>
+                        </View>
                     </View>
                 </View>
-            </View>
 
-            <View style={styles.numberContainer}>
-                <View style={styles.numberRow}>
-                    <Button
-                        type="clear"
-                        title="1"
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                    <Button
-                        type="clear"
-                        title="2"
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                    <Button
-                        type="clear"
-                        title="3"
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                </View>
-                <View style={styles.numberRow}>
-                    <Button
-                        type="clear"
-                        title="4"
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                    <Button
-                        type="clear"
-                        title="5"
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                    <Button
-                        type="clear"
-                        title="6"
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                </View>
-                <View style={styles.numberRow}>
-                    <Button
-                        type="clear"
-                        title="7"
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                    <Button
-                        type="clear"
-                        title="8"
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                    <Button
-                        type="clear"
-                        title="9"
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                </View>
-                <View style={styles.numberRow}>
-                    <Button
-                        type="clear"
-                        // title="1"
-                        onPress={() =>
-                            navigation.navigate('setpinsuccessfully')
-                        }
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                    <Button
-                        type="clear"
-                        title="0"
-                        buttonStyle={styles.textButtonStyle}
-                        titleStyle={styles.textTitleStyle}
-                    />
-                    <Button
-                        type="clear"
-                        icon={{
-                            name: 'backspace',
-                            type: 'font-awesome-5',
-                            size: 32,
-                            color: theme.colors.black,
-                        }}
-                        buttonStyle={styles.textButtonStyle}
-                    />
+                <View style={styles.numberContainer}>
+                    <View style={styles.numberRow}>
+                        <Button
+                            type="clear"
+                            title="1"
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                        <Button
+                            type="clear"
+                            title="2"
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                        <Button
+                            type="clear"
+                            title="3"
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                    </View>
+                    <View style={styles.numberRow}>
+                        <Button
+                            type="clear"
+                            title="4"
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                        <Button
+                            type="clear"
+                            title="5"
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                        <Button
+                            type="clear"
+                            title="6"
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                    </View>
+                    <View style={styles.numberRow}>
+                        <Button
+                            type="clear"
+                            title="7"
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                        <Button
+                            type="clear"
+                            title="8"
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                        <Button
+                            type="clear"
+                            title="9"
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                    </View>
+                    <View style={styles.numberRow}>
+                        <Button
+                            type="clear"
+                            // title="1"
+                            onPress={() =>
+                                navigation.navigate('setpinsuccessfully')
+                            }
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                        <Button
+                            type="clear"
+                            title="0"
+                            buttonStyle={styles.textButtonStyle}
+                            titleStyle={styles.textTitleStyle}
+                        />
+                        <Button
+                            type="clear"
+                            icon={{
+                                name: 'backspace',
+                                type: 'font-awesome-5',
+                                size: 32,
+                                color: theme.colors.black,
+                            }}
+                            buttonStyle={styles.textButtonStyle}
+                        />
+                    </View>
                 </View>
             </View>
         </SafeArea>
@@ -141,10 +145,10 @@ export default EnterPin
 
 const makeStyles = (theme: RNETheme) =>
     StyleSheet.create({
-        container: {
-            paddingVertical: 40,
+        screenContainer: {
+            flex: 1,
+            paddingVertical: 30,
             justifyContent: 'space-between',
-            backgroundColor: theme.colors['grey-100'],
         },
         image: {
             width: 128,

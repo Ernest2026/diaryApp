@@ -5,7 +5,6 @@ import Welcome from '../screens/onboarding/Welcome'
 import SignUp from '../screens/auth/SignUp'
 import SignIn from '../screens/auth/SignIn'
 import SignUpConfirmed from '../screens/auth/SignUpConfirmed'
-import Home from '../screens/diary/Home'
 import ViewEntry from '../screens/diary/ViewEntry'
 import EditEntry from '../screens/diary/EditEntry'
 import Setting from '../screens/setting'
@@ -15,8 +14,9 @@ import SetPinSuccessfully from '../screens/pin/SetPinSuccessfully'
 import EnterPin from '../screens/pin/EnterPin'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store'
-import { getItem } from '../hooks/useSecureStore'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import HomeScreen from '../screens/diary/Home'
+import { StatusBar } from 'expo-status-bar'
+import { useTheme } from '@rneui/themed'
 
 export type RootStackParamList = {
     home: undefined
@@ -38,68 +38,50 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const Navigation = () => {
     const isLoggedIn = useSelector((state: RootState) => state.ui.isLoggedIn)
-    const [pinLock, setPinLock] = useState(false)
-
-    // useEffect(() => {
-    const checkPinLock = async () => {
-        const { status } = await getItem('pin')
-        setPinLock(status)
-        return 'kekek'
-        // console.log(status)
-        // return !isLoggedIn ? 'onboarding' : status ? 'enterpin' : 'home'
-    }
-
-    // checkPinLock()
-    console.log(pinLock)
-    // }, [])
+    const { theme } = useTheme()
 
     return (
-        <NavigationContainer>
-            <Stack.Navigator
-                initialRouteName={
-                    !isLoggedIn ? 'onboarding' : pinLock ? 'enterpin' : 'home'
-                }
-                screenOptions={{ headerShown: false }}
-            >
-                {isLoggedIn ? (
-                    <Stack.Group>
-                        {/* Diary Screen */}
-                        <Stack.Screen name="home" component={Home} />
-                        <Stack.Screen name="viewentry" component={ViewEntry} />
-                        <Stack.Screen name="editentry" component={EditEntry} />
-                        {/* Settings Screen */}
-                        <Stack.Screen name="setting" component={Setting} />
-                        {/* PIN screen */}
-                        <Stack.Screen name="enterpin" component={EnterPin} />
-                        <Stack.Screen name="createpin" component={CreatePin} />
-                        <Stack.Screen
-                            name="confirmpin"
-                            component={ConfirmPin}
-                        />
-                        <Stack.Screen
-                            name="setpinsuccessfully"
-                            component={SetPinSuccessfully}
-                        />
-                    </Stack.Group>
+        <>
+            <NavigationContainer>
+                <Stack.Navigator
+                    initialRouteName={isLoggedIn ? 'enterpin' : 'onboarding'}
+                    screenOptions={{ headerShown: false }}
+                >
+                    {/* {!isLoggedIn ? (
+                    <Stack.Group> */}
+                    {/* Diary Screen */}
+                    <Stack.Screen name="home" component={HomeScreen} />
+                    <Stack.Screen name="viewentry" component={ViewEntry} />
+                    <Stack.Screen name="editentry" component={EditEntry} />
+                    {/* Settings Screen */}
+                    <Stack.Screen name="setting" component={Setting} />
+                    {/* PIN screen */}
+                    <Stack.Screen name="enterpin" component={EnterPin} />
+                    <Stack.Screen name="createpin" component={CreatePin} />
+                    <Stack.Screen name="confirmpin" component={ConfirmPin} />
+                    <Stack.Screen
+                        name="setpinsuccessfully"
+                        component={SetPinSuccessfully}
+                    />
+                    {/* </Stack.Group>
                 ) : (
-                    <Stack.Group>
-                        {/* Onboarding screen */}
-                        <Stack.Screen
-                            name="onboarding"
-                            component={Onboarding}
-                        />
-                        <Stack.Screen name="welcome" component={Welcome} />
-                        {/* Authentication screen */}
-                        <Stack.Screen name="signup" component={SignUp} />
-                        <Stack.Screen name="signin" component={SignIn} />
-                        <Stack.Screen
-                            name="signupconfirmed"
-                            component={SignUpConfirmed}
-                        />
-                    </Stack.Group>
-                )}
-            </Stack.Navigator>
-        </NavigationContainer>
+                    <Stack.Group> */}
+                    {/* Onboarding screen */}
+                    <Stack.Screen name="onboarding" component={Onboarding} />
+                    <Stack.Screen name="welcome" component={Welcome} />
+                    {/* Authentication screen */}
+                    <Stack.Screen name="signup" component={SignUp} />
+                    <Stack.Screen name="signin" component={SignIn} />
+                    <Stack.Screen
+                        name="signupconfirmed"
+                        component={SignUpConfirmed}
+                    />
+                    {/* </Stack.Group>
+                )} */}
+                </Stack.Navigator>
+            </NavigationContainer>
+            <StatusBar style={theme.mode === 'dark' ? 'light' : 'dark'} />
+        </>
     )
 }
 

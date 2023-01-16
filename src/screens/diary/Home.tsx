@@ -105,7 +105,7 @@ const HomeScreen = ({
         <View style={styles.container}>
             <Header navigation={navigation} />
 
-            <SafeArea style={{ marginTop: 0, backgroundColor: 'transparent' }}>
+            <SafeArea style={{ paddingTop: 0, backgroundColor: 'transparent' }}>
                 <Input
                     inputContainerStyle={styles.inputContainerStyle}
                     inputStyle={{

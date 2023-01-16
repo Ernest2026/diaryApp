@@ -20,22 +20,24 @@ const SignUpConfirmed = ({
     const styles = makeStyles(theme)
 
     return (
-        <SafeArea style={styles.container}>
-            <Image style={styles.image} source={thumbup} />
+        <SafeArea style={{ backgroundColor: theme.colors['grey-100'] }}>
+            <View style={styles.screenContainer}>
+                <Image style={styles.image} source={thumbup} />
 
-            <Text h3 style={{ textAlign: 'center' }}>
-                Great! You’ve successfully created an account.
-            </Text>
+                <Text h3 style={{ textAlign: 'center' }}>
+                    Great! You’ve successfully created an account.
+                </Text>
 
-            <Button
-                title="Sign In"
-                containerStyle={styles.btnContainerStyle}
-                buttonStyle={{
-                    backgroundColor: theme.colors['red-100'],
-                }}
-                titleStyle={styles.btnTitleStyle}
-                onPress={() => navigation.navigate('signin')}
-            />
+                <Button
+                    title="Sign In"
+                    containerStyle={styles.btnContainerStyle}
+                    buttonStyle={{
+                        backgroundColor: theme.colors['red-100'],
+                    }}
+                    titleStyle={styles.btnTitleStyle}
+                    onPress={() => navigation.navigate('signin')}
+                />
+            </View>
         </SafeArea>
     )
 }
@@ -44,11 +46,11 @@ export default SignUpConfirmed
 
 const makeStyles = (theme: RNETheme) =>
     StyleSheet.create({
-        container: {
+        screenContainer: {
+            flex: 1,
             paddingVertical: 50,
             alignItems: 'center',
             justifyContent: 'space-between',
-            backgroundColor: theme.colors['grey-100'],
         },
         image: {
             width: '90%',

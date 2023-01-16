@@ -6,11 +6,25 @@
         "githubUrl": "https://github.com/Ernest2026/diaryApp",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
+        "jsEngine": "hermes",
         "splash": {
             "image": "./assets/splash.png",
             "resizeMode": "contain",
             "backgroundColor": "#EE3A46"
         },
-        "android": { "softwareKeyboardLayoutMode": "resize" }
+        "ios": {
+            "bundleIdentifier": "com.ernesto.diaryApp",
+            "buildNumber": "1.0.0"
+        },
+        "android": {
+            "package": "com.ernesto.diaryApp",
+            "versionCode": 1,
+            "softwareKeyboardLayoutMode": "resize"
+        },
+        "extra": {
+            "eas": {
+                "projectId": "ff9c6bf4-374e-4a78-be3a-49dc85d4bafa"
+            }
+        }
     }
 }
