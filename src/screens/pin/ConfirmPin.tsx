@@ -80,6 +80,7 @@ const ConfirmPin = ({
                         title="1"
                         onPress={(e) => handlePinPress(pin, '1')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -87,6 +88,7 @@ const ConfirmPin = ({
                         title="2"
                         onPress={(e) => handlePinPress(pin, '2')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -94,6 +96,7 @@ const ConfirmPin = ({
                         title="3"
                         onPress={(e) => handlePinPress(pin, '3')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                 </View>
@@ -103,6 +106,7 @@ const ConfirmPin = ({
                         title="4"
                         onPress={(e) => handlePinPress(pin, '4')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -110,6 +114,7 @@ const ConfirmPin = ({
                         title="5"
                         onPress={(e) => handlePinPress(pin, '5')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -117,6 +122,7 @@ const ConfirmPin = ({
                         title="6"
                         onPress={(e) => handlePinPress(pin, '6')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                 </View>
@@ -126,6 +132,7 @@ const ConfirmPin = ({
                         title="7"
                         onPress={(e) => handlePinPress(pin, '7')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -133,6 +140,7 @@ const ConfirmPin = ({
                         title="8"
                         onPress={(e) => handlePinPress(pin, '8')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -140,6 +148,7 @@ const ConfirmPin = ({
                         title="9"
                         onPress={(e) => handlePinPress(pin, '9')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                 </View>
@@ -149,6 +158,7 @@ const ConfirmPin = ({
                         // title="1"
                         onPress={() => navigation.navigate('confirmpin')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -156,6 +166,7 @@ const ConfirmPin = ({
                         title="0"
                         onPress={(e) => handlePinPress(pin, '0')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -168,6 +179,7 @@ const ConfirmPin = ({
                         }}
                         onPress={handleDeletePinPress}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                     />
                 </View>
             </View>

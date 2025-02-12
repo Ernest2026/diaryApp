@@ -71,6 +71,7 @@ const CreatePin = ({
                         title="1"
                         onPress={() => handlePinPress(pin, '1')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -78,6 +79,7 @@ const CreatePin = ({
                         title="2"
                         onPress={() => handlePinPress(pin, '2')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -85,6 +87,7 @@ const CreatePin = ({
                         title="3"
                         onPress={() => handlePinPress(pin, '3')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                 </View>
@@ -94,6 +97,7 @@ const CreatePin = ({
                         title="4"
                         onPress={() => handlePinPress(pin, '4')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -101,6 +105,7 @@ const CreatePin = ({
                         title="5"
                         onPress={() => handlePinPress(pin, '5')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -108,6 +113,7 @@ const CreatePin = ({
                         title="6"
                         onPress={() => handlePinPress(pin, '6')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                 </View>
@@ -117,6 +123,7 @@ const CreatePin = ({
                         title="7"
                         onPress={() => handlePinPress(pin, '7')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -124,6 +131,7 @@ const CreatePin = ({
                         title="8"
                         onPress={() => handlePinPress(pin, '8')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -131,6 +139,7 @@ const CreatePin = ({
                         title="9"
                         onPress={() => handlePinPress(pin, '9')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                 </View>
@@ -140,6 +149,7 @@ const CreatePin = ({
                         // title="1"
                         onPress={() => navigation.navigate('confirmpin')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -147,6 +157,7 @@ const CreatePin = ({
                         title="0"
                         onPress={() => handlePinPress(pin, '0')}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                         titleStyle={styles.textTitleStyle}
                     />
                     <Button
@@ -159,6 +170,7 @@ const CreatePin = ({
                         }}
                         onPress={handleDeletePinPress}
                         buttonStyle={styles.textButtonStyle}
+                        containerStyle={{width: 'auto'}}
                     />
                 </View>
             </View>

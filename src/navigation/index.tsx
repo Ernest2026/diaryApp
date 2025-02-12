@@ -17,6 +17,7 @@ import { RootState } from '../store'
 import HomeScreen from '../screens/diary/Home'
 import { StatusBar } from 'expo-status-bar'
 import { useTheme } from '@rneui/themed'
+import { Fragment } from 'react'
 
 export type RootStackParamList = {
     home: undefined
@@ -41,7 +42,7 @@ const Navigation = () => {
     const { theme } = useTheme()
 
     return (
-        <>
+        <Fragment>
             <NavigationContainer>
                 <Stack.Navigator
                     initialRouteName={isLoggedIn ? 'enterpin' : 'onboarding'}
@@ -81,7 +82,7 @@ const Navigation = () => {
                 </Stack.Navigator>
             </NavigationContainer>
             <StatusBar style={theme.mode === 'dark' ? 'light' : 'dark'} />
-        </>
+        </Fragment>
     )
 }
 

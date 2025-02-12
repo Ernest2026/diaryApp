@@ -53,6 +53,7 @@ const Setting = ({
                                 paddingHorizontal: 0,
                                 paddingVertical: 0,
                             }}
+                            // containerStyle={{width: 'auto'}}
                             TouchableComponent={TouchableWithoutFeedback}
                             onPress={() => navigation.navigate('setting')}
                             icon={

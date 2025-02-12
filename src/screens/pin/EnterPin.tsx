@@ -53,18 +53,21 @@ const EnterPin = ({
                             type="clear"
                             title="1"
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                         <Button
                             type="clear"
                             title="2"
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                         <Button
                             type="clear"
                             title="3"
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                     </View>
@@ -73,18 +76,21 @@ const EnterPin = ({
                             type="clear"
                             title="4"
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                         <Button
                             type="clear"
                             title="5"
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                         <Button
                             type="clear"
                             title="6"
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                     </View>
@@ -93,18 +99,21 @@ const EnterPin = ({
                             type="clear"
                             title="7"
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                         <Button
                             type="clear"
                             title="8"
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                         <Button
                             type="clear"
                             title="9"
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                     </View>
@@ -116,12 +125,14 @@ const EnterPin = ({
                                 navigation.navigate('setpinsuccessfully')
                             }
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                         <Button
                             type="clear"
                             title="0"
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                             titleStyle={styles.textTitleStyle}
                         />
                         <Button
@@ -133,6 +144,7 @@ const EnterPin = ({
                                 color: theme.colors.black,
                             }}
                             buttonStyle={styles.textButtonStyle}
+                            containerStyle={{width: 'auto'}}
                         />
                     </View>
                 </View>

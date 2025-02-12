@@ -66,7 +66,7 @@ const makeStyles = (theme: RNETheme) =>
             resizeMode: 'contain',
         },
         btnContainerStyle: {
-            width: '80%',
+            // width: '100%',
             borderRadius: 10,
             marginRight: 'auto',
             marginLeft: 'auto',

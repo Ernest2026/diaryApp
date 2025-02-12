@@ -179,6 +179,7 @@ const EditEntry = ({
                                 paddingVertical: 0,
                                 marginLeft: idx === 0 ? 0 : 32,
                             }}
+                            containerStyle={{width: 'auto'}}
                             icon={
                                 <Icon
                                     type="font-awesome-5"
@@ -261,6 +262,7 @@ const EditEntry = ({
                                                 ? styles.activeBtnStyle
                                                 : styles.btnStyle
                                         }
+                                        containerStyle={{width: 'auto'}}
                                         icon={
                                             <Image
                                                 style={{

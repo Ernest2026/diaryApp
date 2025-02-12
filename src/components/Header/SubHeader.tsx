@@ -32,6 +32,7 @@ const SubHeader = ({
                     paddingVertical: 0,
                     marginRight: 18,
                 }}
+                containerStyle={{width: 'auto'}}
                 onPress={() => navigation.goBack()}
                 TouchableComponent={TouchableWithoutFeedback}
                 icon={

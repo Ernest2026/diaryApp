@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     btnContainerStyle: {
-        width: '90%',
-        borderRadius: 10,
+        // width: '100%',
+        // borderRadius: 10,
         marginRight: 'auto',
         marginLeft: 'auto',
         marginTop: 14,

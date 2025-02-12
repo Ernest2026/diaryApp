@@ -83,6 +83,7 @@ const Onboarding = ({
                     <>
                         <Button
                             type="clear"
+                            containerStyle={{width: 'auto'}}
                             TouchableComponent={TouchableWithoutFeedback}
                             titleStyle={{ color: theme.colors['red-75'] }}
                             onPress={() => navigation.navigate('welcome')}
