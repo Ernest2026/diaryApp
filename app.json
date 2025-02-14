@@ -4,9 +4,10 @@
         "slug": "diaryApp",
         "version": "1.0.0",
         "githubUrl": "https://github.com/Ernest2026/diaryApp",
-        "orientation": "portrait",
+        "orientation": "default",
         "icon": "./assets/icon.png",
         "jsEngine": "hermes",
+        "newArchEnabled": true,
         "splash": {
             "image": "./assets/splash.png",
             "resizeMode": "contain",

@@ -1,14 +1,13 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { Button, Image, Text, useTheme } from '@rneui/themed'
+import { useEffect, useState } from 'react'
 import {
     Keyboard,
     ScrollView,
     StyleSheet,
-    TextInput,
     TouchableWithoutFeedback,
-    View,
+    View
 } from 'react-native'
-import { SafeArea } from '../../components/safearea'
-import { Button, Icon, Image, Text, useTheme } from '@rneui/themed'
-import { SetStateAction, useEffect, useRef, useState } from 'react'
 import {
     angry,
     depressed,
@@ -17,13 +16,13 @@ import {
     laugh,
     sad,
     veryhappy,
-    verysad,
+    verysad
 } from '../../../assets/emoji'
+import TextEditor from '../../components/EditorDom/TextEditor'
 import SubHeader from '../../components/Header/SubHeader'
+import { SafeArea } from '../../components/safearea'
 import { RootStackParamList } from '../../navigation'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RNETheme } from '../../theme'
-import { RichEditor, RichToolbar, actions } from 'react-native-pell-rich-editor'
 
 type EditEntryScreenNavigationProp = NativeStackNavigationProp<
     RootStackParamList,
@@ -71,27 +70,6 @@ const EditEntry = ({
     navigation: EditEntryScreenNavigationProp
 }) => {
     const [keyboardVisible, setKeyboardVisible] = useState(false)
-    const [text, setText] = useState(
-        'Today, my summer holidays have begun. I have some plans for summer vacation. I’m planning to go to a wildlife sanctuary and for boating in a lake. I just don’t want to spend a single moment idly and definitely want to enjoy every bit of these holidays.\n\nLast year, I did not plan my vacations, but this year, I will do everything to make them interesting. I now need to go. I’m excited and eagerly looking forward to my holidays.\n\nLast year, I did not plan my vacations, but this year, I will do everything to make them interesting. I now need to go. I’m excited and eagerly looking forward to my holidays.\n\njdjddjdj'
-    )
-
-    const { theme } = useTheme()
-    const styles = makeStyles(theme)
-
-    const richText = useRef()
-
-    const [descHTML, setDescHTML] = useState('')
-    const [showDescError, setShowDescError] = useState(false)
-
-    const richTextHandle = (descriptionText: SetStateAction<string>) => {
-        if (descriptionText) {
-            setShowDescError(false)
-            setDescHTML(descriptionText)
-        } else {
-            setShowDescError(true)
-            setDescHTML('')
-        }
-    }
 
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener(
@@ -113,6 +91,18 @@ const EditEntry = ({
         }
     }, [])
 
+    const [editorState, setEditorState] = useState<string | null>(null);
+    const [plainText, setPlainText] = useState("");
+
+    // useEffect(() => {
+    //   console.log(editorState);
+    //   console.log(plainText);
+    // }, [plainText])
+    
+
+    const { theme } = useTheme()
+    const styles = makeStyles(theme)
+
     return (
         <SafeArea style={styles.container}>
             <SubHeader title="Edit Entry" navigation={navigation} />
@@ -131,90 +121,7 @@ const EditEntry = ({
                 </Text>
             </View>
 
-            <View
-                style={{
-                    flexDirection: 'row',
-                    marginHorizontal: 20,
-                    marginVertical: 20,
-                }}
-            >
-                <ScrollView
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-                >
-                    {/* <RichToolbar
-                    editor={richText}
-                    selectedIconTint="#873c1e"
-                    iconTint="#312921"
-                    actions={[
-                        actions.alignLeft,
-                        actions.alignCenter,
-                        actions.alignRight,
-                        actions.setBold,
-                        actions.setItalic,
-                        actions.setUnderline,
-                        actions.setStrikethrough,
-                        actions.indent,
-                        actions.outdent,
-                        actions.insertBulletsList,
-                        actions.insertOrderedList,
-                        actions.insertLink,
-                    ]}
-                    style={styles.richTextToolbarStyle}
-                /> */}
-                    {[
-                        'align-left',
-                        'align-center',
-                        'align-right',
-                        'bold',
-                        'italic',
-                        'underline',
-                        'strikethrough',
-                    ].map((value, idx) => (
-                        <Button
-                            key={idx}
-                            type="clear"
-                            buttonStyle={{
-                                paddingHorizontal: 0,
-                                paddingVertical: 0,
-                                marginLeft: idx === 0 ? 0 : 32,
-                            }}
-                            containerStyle={{width: 'auto'}}
-                            icon={
-                                <Icon
-                                    type="font-awesome-5"
-                                    name={value}
-                                    size={32}
-                                    color={theme.colors.black}
-                                />
-                            }
-                        />
-                    ))}
-                </ScrollView>
-            </View>
-
-            <View style={styles.textContainer}>
-                <ScrollView showsVerticalScrollIndicator={false}>
-                    {/* <RichEditor
-                        ref={richText}
-                        onChange={richTextHandle}
-                        placeholder="Write your cool content here :)"
-                        androidHardwareAccelerationDisabled={true}
-                        style={styles.richTextEditorStyle}
-                        initialHeight={250}
-                    /> */}
-                    <TextInput
-                        multiline
-                        onChangeText={(text) => setText(text)}
-                        value={text}
-                        style={{
-                            height: '100%',
-                            fontSize: 20,
-                            color: theme.colors.black,
-                        }}
-                    />
-                </ScrollView>
-            </View>
+            <TextEditor setPlainText={setPlainText} setEditorState={setEditorState} dom={{screen: {width: 500, height: 1500}}} />
 
             <View
                 style={{
@@ -262,7 +169,7 @@ const EditEntry = ({
                                                 ? styles.activeBtnStyle
                                                 : styles.btnStyle
                                         }
-                                        containerStyle={{width: 'auto'}}
+                                        containerStyle={{ width: 'auto' }}
                                         icon={
                                             <Image
                                                 style={{
