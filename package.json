@@ -10,6 +10,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/metro-runtime": "~4.0.1",
     "@expo/vector-icons": "^14.0.2",
     "@lexical/react": "^0.24.0",
     "@react-navigation/native": "^6.1.1",
@@ -36,9 +37,9 @@
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
     "react-redux": "^8.0.5",
+    "redux-persist": "^6.0.0",
     "styled-components": "^5.3.6",
-    "uuid": "^9.0.0",
-    "@expo/metro-runtime": "~4.0.1"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

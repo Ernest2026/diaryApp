@@ -131,7 +131,8 @@ const HomeScreen = ({
                         <TouchableOpacity
                             activeOpacity={1}
                             onPress={() =>
-                                setDialog({ show: true, index: item.id })
+                                // setDialog({ show: true, index: item.id })
+                                navigation.navigate('viewentry')
                             }
                         >
                             <DiaryCard data={item} theme={theme} />
@@ -153,9 +154,9 @@ const HomeScreen = ({
                 onPress={() => navigation.navigate('editentry')}
             />
 
-            {dialog.show && (
+            {/* {dialog.show && (
                 <DiaryDialog setDialog={setDialog} navigation={navigation} />
-            )}
+            )} */}
         </View>
     )
 }
